@@ -1,0 +1,43 @@
+#Menu{
+  border:'1px solid green';
+  width: 220px;
+  margin-top: 15vh;
+  .buttonStyle{
+    width: 100px;
+    height: 100px;
+    margin:10px;
+    border: 1px solid white;
+    background-color: black;
+  }
+  .cardMenu{
+    background-color: black;
+    color:white;
+  }
+  .menuRows{
+    margin:10px;
+    &:nth-child(1){
+      margin:1%;
+    }
+  }
+}
+
+//Mobile Version
+@media(max-width:375px){
+  #Menu{
+    width: 100%;
+    margin-top: 0vh;
+    .buttonStyle{
+      width: 57px;
+      height: 57px;
+      margin:5px;
+      font-size: 10px;
+    }
+    .cardMenu{
+      width: 135px;
+    }
+    .showBox{
+      display: none;
+    }
+  }
+  
+}
