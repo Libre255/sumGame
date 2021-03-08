@@ -1,0 +1,71 @@
+#Menu {
+  border: '1px solid green';
+  width: 220px;
+  margin-top: 15vh;
+}
+
+#Menu .buttonStyle {
+  width: 100px;
+  height: 100px;
+  margin: 10px;
+  border: 1px solid white;
+  background-color: black;
+}
+
+#Menu .cardMenu {
+  background-color: black;
+  color: white;
+}
+
+#Menu .menuRows {
+  margin: 10px;
+}
+
+#Menu .menuRows:nth-child(1) {
+  margin: 1%;
+}
+
+@media (max-width: 375px) {
+  #Menu {
+    width: 100%;
+    margin-top: 0vh;
+  }
+  #Menu .buttonStyle {
+    width: 57px;
+    height: 57px;
+    margin: 5px;
+    font-size: 10px;
+  }
+  #Menu .cardMenu {
+    width: 135px;
+  }
+  #Menu .showBox {
+    display: none;
+  }
+}
+
+body {
+  background-color: black;
+  color: white;
+}
+
+.flexBoxCenter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.testBox {
+  border: 1px solid green;
+}
+
+.testBox2 {
+  border: 1px solid red;
+}
+/*# sourceMappingURL=main.css.map */
