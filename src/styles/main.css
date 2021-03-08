@@ -1,13 +1,13 @@
 #Menu {
   border: '1px solid green';
-  width: 220px;
+  width: 17%;
   margin-top: 15vh;
+  margin-left: 1vw;
 }
 
 #Menu .buttonStyle {
   width: 100px;
   height: 100px;
-  margin: 10px;
   border: 1px solid white;
   background-color: black;
 }
@@ -18,11 +18,7 @@
 }
 
 #Menu .menuRows {
-  margin: 10px;
-}
-
-#Menu .menuRows:nth-child(1) {
-  margin: 1%;
+  margin: 20px 8px;
 }
 
 @media (max-width: 375px) {

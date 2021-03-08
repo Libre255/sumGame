@@ -1,11 +1,11 @@
 #Menu{
   border:'1px solid green';
-  width: 220px;
+  width: 17%;
   margin-top: 15vh;
+  margin-left: 1vw;
   .buttonStyle{
     width: 100px;
     height: 100px;
-    margin:10px;
     border: 1px solid white;
     background-color: black;
   }
@@ -14,10 +14,7 @@
     color:white;
   }
   .menuRows{
-    margin:10px;
-    &:nth-child(1){
-      margin:1%;
-    }
+    margin:20px 8px;
   }
 }
 

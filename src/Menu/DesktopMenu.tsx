@@ -4,7 +4,7 @@ const DesktopMainMenu = () => {
   return (
     <Col id="Menu" className="testBox">
       <Row className="menuRows" justify="center">
-        <Col >
+        <Col>
           <Button
             className="buttonStyle"
             shape="circle"
