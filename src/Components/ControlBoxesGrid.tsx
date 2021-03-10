@@ -1,12 +1,17 @@
-import React from "react";
 import ControlCubePosition from "./ControlCubePosition";
 import UpcomingBoxes from "./UpcomingBoxes";
 
-const ControlBoxesGrid: React.FC = () => {
+interface ControlBoxesGridProps {
+  useControl: number[];
+}
+
+const ControlBoxesGrid = ({ useControl }: ControlBoxesGridProps) => {
+  const [selectedBox, randomBox] = useControl;
+
   return (
     <div id="controlBoxesGrid">
-      <ControlCubePosition />
-      <UpcomingBoxes />
+      <ControlCubePosition selectedBox={selectedBox} />
+      <UpcomingBoxes randomBox={randomBox} />
     </div>
   );
 };
