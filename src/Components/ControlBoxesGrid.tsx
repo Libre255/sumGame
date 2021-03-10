@@ -1,10 +1,12 @@
 import React from "react";
-import CurrentCubeOnPlay from "./CurrentCubeOnPlay";
+import ControlCubePosition from "./ControlCubePosition";
+import UpcomingBoxes from "./UpcomingBoxes";
 
 const ControlBoxesGrid: React.FC = () => {
   return (
     <div id="controlBoxesGrid">
-      <CurrentCubeOnPlay />
+      <ControlCubePosition />
+      <UpcomingBoxes/>
     </div>
   );
 };

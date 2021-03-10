@@ -40,6 +40,8 @@ const DesktopMainMenu = () => {
             Use Space z to throw the next piece.
             {<br />}
             Use x to push the piece to the top
+            {<br />}
+            Use c to grab next piece
           </Card>
         </Col>
       </Row>
