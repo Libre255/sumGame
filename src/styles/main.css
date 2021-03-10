@@ -1,8 +1,8 @@
 #Menu {
   border: '1px solid green';
   width: 17%;
-  margin-top: 15vh;
-  margin-left: 1vw;
+  height: 50%;
+  margin: 15vh 1vw;
 }
 
 #Menu .buttonStyle {
@@ -40,9 +40,47 @@
   }
 }
 
+#controlBoxesGrid {
+  width: 100%;
+  height: 25%;
+  border: 5px solid cadetblue;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+#controlBoxesGrid .CurrentCubeOnPlay {
+  width: 90%;
+  height: 90%;
+  border: 2px solid darkmagenta;
+}
+
+#GamePlayBox {
+  width: 100%;
+  height: 95%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+}
+
 body {
   background-color: black;
   color: white;
+}
+
+#HomePage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 auto;
+  height: 95vh;
 }
 
 .flexBoxCenter {

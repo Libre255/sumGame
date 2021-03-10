@@ -4,15 +4,20 @@ import { Row, Col, Button, Card } from "antd";
 const MobileMenu: React.FC = () => {
   const [how2PlayBtn, setHow2PlayBtn] = useState(false);
 
-  let cardStyle:{} = {
+  let cardStyle: {} = {
     display: how2PlayBtn ? "block" : "none",
-    zIndex:1,
-    position:'absolute',
-    border:'1px solid white',
-    backgroundColor:'black'
-  }
+    zIndex: 1,
+    position: "absolute",
+    border: "1px solid white",
+    backgroundColor: "black",
+  };
   return (
-    <Row id="Menu" justify="space-around" align="middle" style={{borderBottom:'1px solid white', paddingBottom:'5px'}}>
+    <Row
+      id="Menu"
+      justify="space-around"
+      align="middle"
+      style={{ borderBottom: "1px solid white", paddingBottom: "5px" }}
+    >
       <Col>
         <Button
           className="buttonStyle"
