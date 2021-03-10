@@ -1,13 +1,12 @@
-import React from 'react'
-import ControlBoxesGrid from './ControlBoxesGrid'
+import React from "react";
+import ControlBoxesGrid from "./ControlBoxesGrid";
 
-const Gameplay :React.FC = () => {
-
-  return(
+const Gameplay: React.FC = () => {
+  return (
     <div id="GamePlayBox" className="testBox2 ">
-       <ControlBoxesGrid/>
+      <ControlBoxesGrid />
     </div>
-  )
-}
+  );
+};
 
-export default Gameplay 
+export default Gameplay;
