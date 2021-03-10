@@ -56,6 +56,14 @@
   border: 2px solid darkmagenta;
 }
 
+#controlBoxesGrid #UpcomingBoxes {
+  width: 90%;
+  height: 90%;
+  border: 2px solid #135569;
+  font-size: 100px;
+  text-align: center;
+}
+
 #GamePlayBox {
   width: 100%;
   height: 95%;

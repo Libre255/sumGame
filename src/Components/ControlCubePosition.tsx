@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import useKeyPressed from "../Hooks/useKeyPressed";
-const CurrentCubeOnPlay: React.FC = () => {
+
+const ControlCubePosition: React.FC = () => {
   const [gridColumnNr, setGridColumnNr] = useState(1);
   const rightkey = useKeyPressed("ArrowRight");
   const leftKey = useKeyPressed("ArrowLeft");
@@ -16,14 +17,15 @@ const CurrentCubeOnPlay: React.FC = () => {
       console.log(gridColumnNr);
     }
   }, [rightkey]);
+
   return (
     <div
       style={{ gridColumn: gridColumnNr }}
-      className="flexBoxCenter"
+      className="flexBoxCenter testBox2"
     >
       <div className="CurrentCubeOnPlay"></div>
     </div>
   );
 };
 
-export default CurrentCubeOnPlay;
+export default ControlCubePosition;
