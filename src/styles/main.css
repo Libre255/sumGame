@@ -42,15 +42,25 @@
 
 #controlBoxesGrid {
   width: 100%;
-  height: 25%;
+  height: 100%;
   border: 5px solid cadetblue;
+  -ms-grid-row: 6;
+  grid-row: 6;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 6;
+  grid-column: 1/7;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
-#controlBoxesGrid .CurrentCubeOnPlay {
+#controlBoxesGrid .GlobalStyleNrs {
+  font-size: 100px;
+  text-align: center;
+}
+
+#controlBoxesGrid #CurrentCubeOnPlay {
   width: 90%;
   height: 90%;
   border: 2px solid darkmagenta;
@@ -60,19 +70,17 @@
   width: 90%;
   height: 90%;
   border: 2px solid #135569;
-  font-size: 100px;
-  text-align: center;
 }
 
 #GamePlayBox {
   width: 100%;
   height: 95%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: end;
-      -ms-flex-align: end;
-          align-items: flex-end;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
 body {
