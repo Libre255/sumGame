@@ -6,7 +6,7 @@ const ControlBoxesGrid: React.FC = () => {
   return (
     <div id="controlBoxesGrid">
       <ControlCubePosition />
-      <UpcomingBoxes/>
+      <UpcomingBoxes />
     </div>
   );
 };
