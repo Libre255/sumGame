@@ -1,8 +1,8 @@
 interface upcomingBoxesProps {
-  randomBox: number;
+  randomNr: number;
 }
 
-const UpcomingBoxes = ({ randomBox }: upcomingBoxesProps) => {
+const UpcomingBoxes = ({ randomNr }: upcomingBoxesProps) => {
   return (
     <div
       id="UpcomingBoxesContainer"
@@ -10,7 +10,7 @@ const UpcomingBoxes = ({ randomBox }: upcomingBoxesProps) => {
       style={{ gridColumn: 6 }}
     >
       <div id="UpcomingBoxes" className="GlobalStyleNrs">
-        {randomBox}
+        {randomNr}
       </div>
     </div>
   );
