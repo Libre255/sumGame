@@ -3,8 +3,8 @@ interface ControlCubePositionProps {
 }
 
 const ControlCubePosition = ({ useControl }: ControlCubePositionProps) => {
-  const [selectedNr, bottomBoxPosition] = useControl
-  
+  const [selectedNr, bottomBoxPosition] = useControl;
+
   return (
     <div
       style={{ gridColumn: bottomBoxPosition }}

@@ -2,7 +2,7 @@ interface upcomingBoxesProps {
   randomNr: number;
 }
 
-const UpcomingBoxes = ({ randomNr}: upcomingBoxesProps) => {
+const UpcomingBoxes = ({ randomNr }: upcomingBoxesProps) => {
   return (
     <div
       id="UpcomingBoxesContainer"
