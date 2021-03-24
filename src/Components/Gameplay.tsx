@@ -1,16 +1,18 @@
 import React from "react";
 import ControlBoxesGrid from "./ControlBoxesGrid";
-import useControlBox from "../Hooks/useControlBox";
+import useControlNr from "../Hooks/useControlNr";
+import useControlMovements from '../Hooks/useControlMovements';
 
 const Gameplay: React.FC = () => {
-  const { selectedBox, randomBox, boxToTop } = useControlBox();
-
+  const { selectedNr, randomNr, boxToTop} = useControlNr();
+  const {bottomBoxPosition, shotAnimation} = useControlMovements()
+  
   return (
     <div id="GamePlayBox" className="testBox2 ">
-      <div className="testBox" style={{ gridColumn: 4 }}>
+      <div className="testBox GlobalStyleNrs" style={shotAnimation}>
         {boxToTop}
       </div>
-      <ControlBoxesGrid useControl={[selectedBox!, randomBox]} />
+      <ControlBoxesGrid useControl={[selectedNr!, randomNr, bottomBoxPosition]} />
     </div>
   );
 };

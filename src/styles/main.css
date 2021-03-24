@@ -55,11 +55,6 @@
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
-#controlBoxesGrid .GlobalStyleNrs {
-  font-size: 100px;
-  text-align: center;
-}
-
 #controlBoxesGrid #CurrentCubeOnPlay {
   width: 90%;
   height: 90%;
@@ -117,5 +112,10 @@ body {
 
 .testBox2 {
   border: 1px solid red;
+}
+
+.GlobalStyleNrs {
+  font-size: 100px;
+  text-align: center;
 }
 /*# sourceMappingURL=main.css.map */

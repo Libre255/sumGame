@@ -6,12 +6,12 @@ interface ControlBoxesGridProps {
 }
 
 const ControlBoxesGrid = ({ useControl }: ControlBoxesGridProps) => {
-  const [selectedBox, randomBox] = useControl;
+  const [selectedNr, randomNr, bottomBoxPosition] = useControl;
 
   return (
     <div id="controlBoxesGrid">
-      <ControlCubePosition selectedBox={selectedBox} />
-      <UpcomingBoxes randomBox={randomBox} />
+      <ControlCubePosition useControl={[selectedNr, bottomBoxPosition]} />
+      <UpcomingBoxes randomNr={randomNr} />
     </div>
   );
 };
