@@ -6,8 +6,9 @@ const useControlMovements = () => {
   const [shotAnimation, setShotAnimation] = useState<{
     gridColumn: number;
     gridRow: number;
-  }>({ gridColumn: bottomBoxPosition, gridRow: 5 });
-  const [waitAnimation, setWaitAnimation] = useState(true);
+    display:string;
+  }>({ gridColumn: bottomBoxPosition, gridRow: 5, display:'none'});
+  const [readyToShot, setReadyToShot] = useState<boolean>(true);
 
   const rightkey = useKeyPressed("ArrowRight");
   const leftKey = useKeyPressed("ArrowLeft");
@@ -24,24 +25,27 @@ const useControlMovements = () => {
 
   useEffect(() => {
     let keyFrame = 5;
-    if (x_Key_Pressed && waitAnimation) {
-      setWaitAnimation(false);
+    if (x_Key_Pressed && readyToShot) {
+      setReadyToShot(false);
+      setShotAnimation(pv => ({...pv, display:'block'}))
       const animation = setInterval(() => {
-        keyFrame--;
-        setShotAnimation((pv) => ({ ...pv, gridRow: keyFrame }));
+        if(keyFrame > 2){
+          keyFrame--;
+          setShotAnimation((pv) => ({ ...pv, gridRow: keyFrame }));
+        }
       }, 1000);
 
       return () => {
         setTimeout(() => {
           clearInterval(animation);
-          setShotAnimation((pv) => ({ ...pv, gridRow: 5 }));
-          setWaitAnimation(true);
-        }, 5000);
+          setShotAnimation((pv) => ({ ...pv, gridRow: 5, display:'none' }));
+          setReadyToShot(true);
+        }, 3000);
       };
     }
   }, [x_Key_Pressed]);
 
-  return { bottomBoxPosition, shotAnimation };
+  return { bottomBoxPosition, shotAnimation, readyToShot };
 };
 
 export default useControlMovements;
