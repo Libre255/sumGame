@@ -17,18 +17,18 @@ const useControlNr = (position?: number) => {
   const z_Key_Pressed = useKeyPressed("z");
   const x_Key_Pressed = useKeyPressed("x");
   const c_Key_Pressed = useKeyPressed("c");
-
+  
   useEffect(() => {
-    function randomUpcomingBox() {
+    if (c_Key_Pressed || x_Key_Pressed) {
+      randomizeUpcomingBox();
+    }
+    function randomizeUpcomingBox() {
       const shuffleArr = shuffleArray(upComingBoxes);
       const grabRandomNr =
         shuffleArr[Math.floor(Math.random() * shuffleArr.length)];
       setRandomNr(grabRandomNr);
     }
-    if (c_Key_Pressed) {
-      randomUpcomingBox();
-    }
-  }, [c_Key_Pressed]);
+  }, [c_Key_Pressed, x_Key_Pressed]);
 
   useEffect(() => {
     if (z_Key_Pressed) {
