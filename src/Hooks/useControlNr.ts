@@ -18,7 +18,7 @@ const useControlNr = (position?: number) => {
   const x_Key_Pressed = useKeyPressed("x");
   const c_Key_Pressed = useKeyPressed("c");
   
-  RandomizeBox:useEffect(() => {
+  useEffect(() => {
     if (c_Key_Pressed || x_Key_Pressed) {
       randomizeUpcomingBox();
     }
