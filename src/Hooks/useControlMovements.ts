@@ -4,10 +4,9 @@ import useKeyPressed from "./useKeyPressed";
 const useControlMovements = () => {
   const [bottomBoxPosition, setBottomBoxPosition] = useState<number>(1);
   const [shotAnimation, setShotAnimation] = useState<{
-    gridColumn: number;
     gridRow: number;
-    display:string;
-  }>({ gridColumn: bottomBoxPosition, gridRow: 5, display:'none'});
+    display: string;
+  }>({ gridRow: 5, display: "none" });
   const [readyToShot, setReadyToShot] = useState<boolean>(true);
 
   const rightkey = useKeyPressed("ArrowRight");
@@ -20,16 +19,16 @@ const useControlMovements = () => {
     } else if (rightkey) {
       setBottomBoxPosition((pv) => (pv === 5 ? pv : (pv += 1)));
     }
-    setShotAnimation((pv) => ({ ...pv, gridColumn: bottomBoxPosition }));
   }, [leftKey, rightkey]);
 
   useEffect(() => {
-    let keyFrame = 5;
+    let keyFrame: number = 5;
+
     if (x_Key_Pressed && readyToShot) {
       setReadyToShot(false);
-      setShotAnimation(pv => ({...pv, display:'block'}))
+      setShotAnimation((pv) => ({ ...pv, display: "block" }));
       const animation = setInterval(() => {
-        if(keyFrame > 2){
+        if (keyFrame > 2) {
           keyFrame--;
           setShotAnimation((pv) => ({ ...pv, gridRow: keyFrame }));
         }
@@ -38,12 +37,12 @@ const useControlMovements = () => {
       return () => {
         setTimeout(() => {
           clearInterval(animation);
-          setShotAnimation((pv) => ({ ...pv, gridRow: 5, display:'none' }));
+          setShotAnimation((pv) => ({ ...pv, gridRow: 5, display: "none" }));
           setReadyToShot(true);
         }, 3000);
       };
     }
-  }, [x_Key_Pressed]);
+  }, [x_Key_Pressed, readyToShot]);
 
   return { bottomBoxPosition, shotAnimation, readyToShot };
 };
