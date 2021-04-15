@@ -5,9 +5,14 @@ import useControlMovements from "../Hooks/useControlMovements";
 import OneTopBox from "./OneTopBox";
 
 const Gameplay: React.FC = () => {
-  const { bottomBoxPosition, shotAnimation } = useControlMovements();
-  const { selectedNr, randomNr, boxToTop, TopBoxesArray } = useControlNr(
-    bottomBoxPosition
+  const {
+    bottomBoxPosition,
+    shotAnimation,
+    readyToShot,
+  } = useControlMovements();
+  const { selectedNr, randomNr, TopBoxesArray } = useControlNr(
+    bottomBoxPosition,
+    readyToShot
   );
 
   return (
@@ -15,8 +20,11 @@ const Gameplay: React.FC = () => {
       {TopBoxesArray.map((TopBox, index) => (
         <OneTopBox key={index} NrValue={TopBox} />
       ))}
-      <div className="testBox GlobalStyleNrs" style={shotAnimation}>
-        {boxToTop}
+      <div
+        className="testBox GlobalStyleNrs"
+        style={{ ...shotAnimation, gridColumn: bottomBoxPosition }}
+      >
+        {selectedNr}
       </div>
       <ControlBoxesGrid
         useControl={[selectedNr!, randomNr, bottomBoxPosition]}
