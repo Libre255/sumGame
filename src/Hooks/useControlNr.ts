@@ -39,10 +39,15 @@ const useControlNr = (bottomPosition?: number, readyToShot?: boolean) => {
   useEffect(() => {
     if (c_Key_Pressed && readyToShot) {
       randomizeUpcomingBox();
-    } else if (z_Key_Pressed && readyToShot) {
+    }
+  }, [c_Key_Pressed, readyToShot]);
+
+  useEffect(() => {
+    
+    if (z_Key_Pressed && readyToShot) {
       setSelectedNr(randomNr);
     }
-  }, [c_Key_Pressed, z_Key_Pressed, readyToShot]);
+  }, [z_Key_Pressed, readyToShot, randomNr])
 
   return { randomNr, selectedNr, TopBoxesArray };
 };
