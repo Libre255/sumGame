@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import useKeyPressed from "./useKeyPressed";
-import {action, ACTIONS} from '../Methods/GamePlayReducer'
+import { action, ACTIONS } from "../Methods/GamePlayReducer";
 
-const useControlMovements = (dispatch:React.Dispatch<action>) => {
+const useControlMovements = (dispatch: React.Dispatch<action>) => {
   const [shotAnimation, setShotAnimation] = useState<{
     gridRow: number;
     display: string;
@@ -15,11 +15,11 @@ const useControlMovements = (dispatch:React.Dispatch<action>) => {
 
   useEffect(() => {
     if (leftKey) {
-      dispatch({type:ACTIONS.Left_BottomPosition})
-    }else if (rightkey) {
-      dispatch({type:ACTIONS.Right_BottomPosition})
+      dispatch({ type: ACTIONS.Left_BottomPosition });
+    } else if (rightkey) {
+      dispatch({ type: ACTIONS.Right_BottomPosition });
     }
-  }, [leftKey, rightkey,  dispatch]);
+  }, [leftKey, rightkey, dispatch]);
 
   useEffect(() => {
     let animationKeyFrame: number = 5;
@@ -44,7 +44,7 @@ const useControlMovements = (dispatch:React.Dispatch<action>) => {
     }
   }, [x_Key_Pressed, readyToShot]);
 
-  return {  shotAnimation, readyToShot };
+  return { shotAnimation, readyToShot };
 };
 
 export default useControlMovements;
