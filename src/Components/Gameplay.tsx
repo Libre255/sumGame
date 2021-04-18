@@ -1,18 +1,19 @@
-import React from "react";
+import React, {useReducer} from "react";
 import ControlBoxesGrid from "./ControlBoxesGrid";
 import useControlNr from "../Hooks/useControlNr";
 import useControlMovements from "../Hooks/useControlMovements";
 import OneTopBox from "./OneTopBox";
+import {initialState, reducer } from '../Methods/GamePlayReducer'
 
 const Gameplay: React.FC = () => {
+  const [{selectedNr, TopBoxesArray, bottomBoxPosition}, dispatch] = useReducer(reducer, initialState)
   const {
-    bottomBoxPosition,
     shotAnimation,
     readyToShot,
-  } = useControlMovements();
-  const { selectedNr, randomNr, TopBoxesArray } = useControlNr(
-    bottomBoxPosition,
-    readyToShot
+  } = useControlMovements(dispatch);
+  const { randomNr } = useControlNr(
+    readyToShot,
+    dispatch
   );
 
   return (

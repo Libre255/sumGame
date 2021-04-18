@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import useKeyPressed from "./useKeyPressed";
+import {action, ACTIONS} from '../Methods/GamePlayReducer'
 
-const useControlMovements = () => {
-  const [bottomBoxPosition, setBottomBoxPosition] = useState<number>(1);
+const useControlMovements = (dispatch:React.Dispatch<action>) => {
   const [shotAnimation, setShotAnimation] = useState<{
     gridRow: number;
     display: string;
@@ -15,22 +15,22 @@ const useControlMovements = () => {
 
   useEffect(() => {
     if (leftKey) {
-      setBottomBoxPosition((pv) => (pv === 1 ? pv : (pv -= 1)));
-    } else if (rightkey) {
-      setBottomBoxPosition((pv) => (pv === 5 ? pv : (pv += 1)));
+      dispatch({type:ACTIONS.Left_BottomPosition})
+    }else if (rightkey) {
+      dispatch({type:ACTIONS.Right_BottomPosition})
     }
-  }, [leftKey, rightkey]);
+  }, [leftKey, rightkey,  dispatch]);
 
   useEffect(() => {
-    let keyFrame: number = 5;
+    let animationKeyFrame: number = 5;
 
     if (x_Key_Pressed && readyToShot) {
       setReadyToShot(false);
       setShotAnimation((pv) => ({ ...pv, display: "block" }));
       const animation = setInterval(() => {
-        if (keyFrame > 2) {
-          keyFrame--;
-          setShotAnimation((pv) => ({ ...pv, gridRow: keyFrame }));
+        if (animationKeyFrame > 2) {
+          animationKeyFrame--;
+          setShotAnimation((pv) => ({ ...pv, gridRow: animationKeyFrame }));
         }
       }, 1000);
 
@@ -44,7 +44,7 @@ const useControlMovements = () => {
     }
   }, [x_Key_Pressed, readyToShot]);
 
-  return { bottomBoxPosition, shotAnimation, readyToShot };
+  return {  shotAnimation, readyToShot };
 };
 
 export default useControlMovements;

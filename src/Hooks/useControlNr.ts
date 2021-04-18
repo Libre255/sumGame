@@ -1,17 +1,14 @@
 import { useEffect, useState, useMemo } from "react";
 import useKeyPressed from "./useKeyPressed";
 import shuffleArray from "../Methods/shuffleArray";
+import {action, ACTIONS} from '../Methods/GamePlayReducer'
 
 const upComingBoxes: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; //This can be remplaced with fetch from database
 
-const useControlNr = (bottomPosition?: number, readyToShot?: boolean) => {
+const useControlNr = (readyToShot: boolean, dispatch:React.Dispatch<action>) => {
   const [randomNr, setRandomNr] = useState<number>(
     upComingBoxes[Math.floor(Math.random() * upComingBoxes.length)]
   );
-  const [selectedNr, setSelectedNr] = useState<number | undefined>(undefined);
-  const [TopBoxesArray, setTopBoxesArray] = useState<
-    [number, number, number, number, number]
-  >([0, 0, 0, 0, 0]);
 
   const z_Key_Pressed = useKeyPressed("z");
   const c_Key_Pressed = useKeyPressed("c");
@@ -25,16 +22,10 @@ const useControlNr = (bottomPosition?: number, readyToShot?: boolean) => {
 
   useMemo(() => {
     if (readyToShot) {
-      setTopBoxesArray((pv) => {
-        if (selectedNr === undefined) {
-          return pv;
-        }
-        pv[bottomPosition! - 1] = selectedNr;
-        return pv;
-      });
+      dispatch({type:ACTIONS.UPDATE_TOP_ARRAY})
       return randomizeUpcomingBox();
     }
-  }, [readyToShot]);
+  }, [readyToShot, dispatch]);
 
   useEffect(() => {
     if (c_Key_Pressed && readyToShot) {
@@ -43,13 +34,12 @@ const useControlNr = (bottomPosition?: number, readyToShot?: boolean) => {
   }, [c_Key_Pressed, readyToShot]);
 
   useEffect(() => {
-    
     if (z_Key_Pressed && readyToShot) {
-      setSelectedNr(randomNr);
+      dispatch({type:ACTIONS.UPDATE_SELECTED_NR, selectedNr:randomNr})
     }
-  }, [z_Key_Pressed, readyToShot, randomNr])
+  }, [z_Key_Pressed, readyToShot, randomNr, dispatch])
 
-  return { randomNr, selectedNr, TopBoxesArray };
+  return { randomNr };
 };
 
 export default useControlNr;
