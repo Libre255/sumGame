@@ -1,4 +1,4 @@
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useCallback } from "react";
 import useKeyPressed from "./useKeyPressed";
 import shuffleArray from "../Methods/shuffleArray";
 import { action, ACTIONS } from "../Methods/GamePlayReducer";
@@ -23,10 +23,10 @@ const useControlNr = (
     setRandomNr(grabRandomNr);
   }
 
-  useMemo(() => {
+  useCallback(() => {
     if (readyToShot) {
       dispatch({ type: ACTIONS.UPDATE_TOP_ARRAY });
-      return randomizeUpcomingBox();
+      randomizeUpcomingBox();
     }
   }, [readyToShot, dispatch]);
 
