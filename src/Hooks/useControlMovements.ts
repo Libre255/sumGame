@@ -39,7 +39,7 @@ const useControlMovements = (dispatch: React.Dispatch<action>) => {
           clearInterval(animation);
           setShotAnimation((pv) => ({ ...pv, gridRow: 5, display: "none" }));
           setReadyToShot(true);
-        }, 3000);
+        }, 4000);
       };
     }
   }, [x_Key_Pressed, readyToShot]);

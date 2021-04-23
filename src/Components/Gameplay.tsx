@@ -15,9 +15,7 @@ const Gameplay: React.FC = () => {
 
   return (
     <div id="GamePlayBox" className="testBox2 ">
-      {TopBoxesArray.map((TopBox, index) => (
-        <OneTopBox key={index} NrValue={TopBox} />
-      ))}
+      {TopBoxesArray.map(TopArray => TopArray.map((TopBox, index) => <OneTopBox key={index} NrValue={TopBox.value} />))}
       <div
         className="testBox GlobalStyleNrs"
         style={{ ...shotAnimation, gridColumn: bottomBoxPosition }}
