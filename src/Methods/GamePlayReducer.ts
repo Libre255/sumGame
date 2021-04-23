@@ -1,5 +1,6 @@
 interface initialStateType {
-  TopBoxesArray: number[];
+  ArraySelected:number;
+  TopBoxesArray: {value:number, AmountTimesAdded:number}[][];
   bottomBoxPosition: number;
   selectedNr: number;
 }
@@ -16,7 +17,10 @@ const ACTIONS = {
 };
 
 const initialState: initialStateType = {
-  TopBoxesArray: [0, 0, 0, 0, 0],
+  ArraySelected:0,
+  TopBoxesArray: [
+    [{value:0, AmountTimesAdded:0}, {value:0, AmountTimesAdded:0}, {value:0, AmountTimesAdded:0} ,{value:0, AmountTimesAdded:0},{value:0, AmountTimesAdded:0}]
+  ],
   bottomBoxPosition: 1,
   selectedNr: 0,
 };
@@ -24,9 +28,18 @@ const initialState: initialStateType = {
 const reducer = (state: initialStateType, action: action) => {
   const updateTopBoxesArr = () => {
     let copyState = { ...state };
-    copyState.TopBoxesArray[copyState.bottomBoxPosition - 1] =
-      copyState.selectedNr;
-    return copyState;
+    let seletedBox = copyState.TopBoxesArray[copyState.ArraySelected][copyState.bottomBoxPosition - 1]
+    
+    if(seletedBox.AmountTimesAdded === 8){
+      copyState.TopBoxesArray.push([])
+      copyState.ArraySelected += 1;
+    };
+    seletedBox.value = copyState.selectedNr;
+    seletedBox.AmountTimesAdded += 1;
+
+    console.log(copyState)
+      return copyState;
+    
   };
   const updateSelectedNr = () =>
     action.selectedNr

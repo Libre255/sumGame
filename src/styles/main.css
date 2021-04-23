@@ -76,6 +76,19 @@
       grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
 }
 
+#GamePlayBox .TopBoxesArray {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 5;
+  grid-column: 1/6;
+}
+
+#GamePlayBox .TopBoxesArray .OneTopBox {
+  width: 20%;
+}
+
 body {
   background-color: black;
   color: white;

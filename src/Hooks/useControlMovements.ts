@@ -32,14 +32,14 @@ const useControlMovements = (dispatch: React.Dispatch<action>) => {
           animationKeyFrame--;
           setShotAnimation((pv) => ({ ...pv, gridRow: animationKeyFrame }));
         }
-      }, 1000);
+      }, 500);
 
       return () => {
         setTimeout(() => {
           clearInterval(animation);
           setShotAnimation((pv) => ({ ...pv, gridRow: 5, display: "none" }));
           setReadyToShot(true);
-        }, 4000);
+        }, 2000);
       };
     }
   }, [x_Key_Pressed, readyToShot]);
