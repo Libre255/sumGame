@@ -6,7 +6,7 @@ import { action, ACTIONS } from "../Methods/GamePlayReducer";
 const upComingBoxes: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; //This can be remplaced with fetch from database
 
 const useControlNr = (
-  readyToShot: boolean,
+  readyToShot: {itsReady2Shoot:boolean, gameStarted:boolean},
   dispatch: React.Dispatch<action>
 ) => {
   const [randomNr, setRandomNr] = useState<number>(
@@ -22,22 +22,22 @@ const useControlNr = (
       shuffleArr[Math.floor(Math.random() * shuffleArr.length)];
     setRandomNr(grabRandomNr);
   }
-
   useMemo(() => {
-    if (readyToShot) {
+    //if(x_Key_Pressed && !dontRenderOnStart.current) dontRenderOnStart.current = true;  //use this if readyToShot causes some bugs
+    if (readyToShot.itsReady2Shoot && readyToShot.gameStarted ) {
       dispatch({ type: ACTIONS.UPDATE_TOP_ARRAY });
       randomizeUpcomingBox();
     }
-  }, [readyToShot, dispatch]);
-
+  }, [readyToShot, dispatch ]);
+  
   useEffect(() => {
-    if (c_Key_Pressed && readyToShot) {
+    if (c_Key_Pressed && readyToShot.itsReady2Shoot) {
       randomizeUpcomingBox();
     }
   }, [c_Key_Pressed, readyToShot]);
 
   useEffect(() => {
-    if (z_Key_Pressed && readyToShot) {
+    if (z_Key_Pressed && readyToShot.itsReady2Shoot) {
       dispatch({ type: ACTIONS.UPDATE_SELECTED_NR, selectedNr: randomNr });
     }
   }, [z_Key_Pressed, readyToShot, randomNr, dispatch]);

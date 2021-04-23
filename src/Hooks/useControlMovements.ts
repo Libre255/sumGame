@@ -7,7 +7,7 @@ const useControlMovements = (dispatch: React.Dispatch<action>) => {
     gridRow: number;
     display: string;
   }>({ gridRow: 5, display: "none" });
-  const [readyToShot, setReadyToShot] = useState<boolean>(true);
+  const [readyToShot, setReadyToShot] = useState<{itsReady2Shoot:boolean, gameStarted:boolean}>({itsReady2Shoot:true, gameStarted:false});
 
   const rightkey = useKeyPressed("ArrowRight");
   const leftKey = useKeyPressed("ArrowLeft");
@@ -23,9 +23,13 @@ const useControlMovements = (dispatch: React.Dispatch<action>) => {
 
   useEffect(() => {
     let animationKeyFrame: number = 5;
+    
+    if(x_Key_Pressed && !readyToShot.gameStarted){
+      setReadyToShot(pv => ({...pv, gameStarted: true}));
+    };
 
-    if (x_Key_Pressed && readyToShot) {
-      setReadyToShot(false);
+    if (x_Key_Pressed && readyToShot.itsReady2Shoot) {
+      setReadyToShot(pv => ({...pv, itsReady2Shoot: false}))
       setShotAnimation((pv) => ({ ...pv, display: "block" }));
       const animation = setInterval(() => {
         if (animationKeyFrame > 2) {
@@ -38,10 +42,10 @@ const useControlMovements = (dispatch: React.Dispatch<action>) => {
         setTimeout(() => {
           clearInterval(animation);
           setShotAnimation((pv) => ({ ...pv, gridRow: 5, display: "none" }));
-          setReadyToShot(true);
+          setReadyToShot(pv => ({...pv, itsReady2Shoot: true}))
         }, 2000);
       };
-    }
+    };
   }, [x_Key_Pressed, readyToShot]);
 
   return { shotAnimation, readyToShot };

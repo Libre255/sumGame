@@ -28,18 +28,15 @@ const initialState: initialStateType = {
 const reducer = (state: initialStateType, action: action) => {
   const updateTopBoxesArr = () => {
     let copyState = { ...state };
-    let seletedBox = copyState.TopBoxesArray[copyState.ArraySelected][copyState.bottomBoxPosition - 1]
+  
+    let seletedBox = copyState.TopBoxesArray[0][copyState.bottomBoxPosition - 1]
     
-    if(seletedBox.AmountTimesAdded === 8){
-      copyState.TopBoxesArray.push([])
-      copyState.ArraySelected += 1;
-    };
+    copyState.ArraySelected += 1;
     seletedBox.value = copyState.selectedNr;
     seletedBox.AmountTimesAdded += 1;
 
     console.log(copyState)
-      return copyState;
-    
+      return {...state, ...copyState}
   };
   const updateSelectedNr = () =>
     action.selectedNr
