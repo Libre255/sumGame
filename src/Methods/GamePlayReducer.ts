@@ -1,5 +1,5 @@
 interface initialStateType {
-  ArraySelected:number;
+  verticalBoxArrayIndex:[number, number, number, number, number];
   TopBoxesArray: {value:number, AmountTimesAdded:number}[][];
   bottomBoxPosition: number;
   selectedNr: number;
@@ -11,13 +11,14 @@ export interface action {
 }
 const ACTIONS = {
   UPDATE_TOP_ARRAY: "update Top Boxes Array",
-  Left_BottomPosition: "Move bottomposition to the left",
-  Right_BottomPosition: "Move bottomposition to the right",
+  UPDATE_verticalBoxArrayIndex:"selects array inside TopBoxesArray",
   UPDATE_SELECTED_NR: "update selected number",
+  Left_BottomPosition: "Move bottomposition to the left",
+  Right_BottomPosition: "Move bottomposition to the right"
 };
 
 const initialState: initialStateType = {
-  ArraySelected:0,
+  verticalBoxArrayIndex:[0,0,0,0,0],
   TopBoxesArray: [
     [{value:0, AmountTimesAdded:0}, {value:0, AmountTimesAdded:0}, {value:0, AmountTimesAdded:0} ,{value:0, AmountTimesAdded:0},{value:0, AmountTimesAdded:0}]
   ],
@@ -26,17 +27,38 @@ const initialState: initialStateType = {
 };
 
 const reducer = (state: initialStateType, action: action) => {
+  const updateVerticalArray = ()=>{
+    return state.verticalBoxArrayIndex.map((verticalArray, index) => 
+            index === state.bottomBoxPosition - 1 ? verticalArray += 1 : verticalArray)
+  }
   const updateTopBoxesArr = () => {
-    let copyState = { ...state };
-  
-    let seletedBox = copyState.TopBoxesArray[0][copyState.bottomBoxPosition - 1]
-    
-    copyState.ArraySelected += 1;
-    seletedBox.value = copyState.selectedNr;
-    seletedBox.AmountTimesAdded += 1;
+    if(state.selectedNr === 0) return {...state};
+    const verticalArraySelection = state.verticalBoxArrayIndex[state.bottomBoxPosition - 1]
+    let updateVertical = undefined;
+    //need to create another "vertical" array once it hits 3
+    const  updateTopBoxArray = state.TopBoxesArray.map((BoxArray, index)=>{
+      if(index === verticalArraySelection ){
+       return BoxArray.map((Box, index) => {
+         if(index === state.bottomBoxPosition - 1){
+           const updateBox = {value:state.selectedNr, AmountTimesAdded:Box.AmountTimesAdded + 1}
+           console.log(updateBox)
+           if(updateBox.AmountTimesAdded === 3){
+             updateVertical = updateVerticalArray() //It stop updating the box after it hits 3 // need fix
+             return updateBox
+           }else return updateBox
+         } else return Box;
+       })
+      } else return BoxArray;
+    });
 
-    console.log(copyState)
-      return {...state, ...copyState}
+    let result = {...state, TopBoxesArray:updateTopBoxArray};
+    if(updateVertical === undefined){
+      return result 
+    }else{
+      result = {...state, TopBoxesArray:updateTopBoxArray, verticalBoxArrayIndex:updateVertical};
+      console.log(result)
+      return result
+    }
   };
   const updateSelectedNr = () =>
     action.selectedNr
