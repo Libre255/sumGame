@@ -33,7 +33,7 @@ const Gameplay: React.FC = () => {
         {selectedNr}
       </div>
       <ControlBoxesGrid
-        useControl={[selectedNr!, randomNr, bottomBoxPosition]}
+        useControl={[selectedNr, randomNr, bottomBoxPosition]}
       />
     </div>
   );
