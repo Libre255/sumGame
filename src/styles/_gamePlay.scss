@@ -4,4 +4,11 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  .TopBoxesArray{
+    display: flex;
+    grid-column: 1/6;
+    .OneTopBox{
+      width: 20%;
+    }
+  }
 }
