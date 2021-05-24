@@ -1,7 +1,6 @@
 @import './menu';
-@import './controlBoxesGrid';
+@import './controller';
 @import './gamePlay';
-@import './TopBoxes';
 
 @mixin FlexCenter {
   display: flex;

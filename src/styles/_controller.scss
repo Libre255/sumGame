@@ -1,0 +1,14 @@
+#ControllerGrid{
+  border: 5px solid cadetblue;
+  grid-row: 6;
+  grid-column: 1/7;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+
+  #BoxContainer{
+    border:5px solid rgb(163, 147, 0);
+  }
+  #UpcomingBoxesContainer{
+    border:5px solid rgb(2, 22, 204);
+  }
+}

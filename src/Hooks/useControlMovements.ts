@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import useKeyPressed from "./useKeyPressed";
-import { action, ACTIONS } from "../Methods/GamePlayReducer";
+import { ACTIONS } from "../Methods/GamePlayReducer";
+import { Action } from "../Methods/GamePlayeReducerTypes";
 
-const useControlMovements = (dispatch: React.Dispatch<action>) => {
+const useControlMovements = (dispatch: React.Dispatch<Action>) => {
   const [shotAnimation, setShotAnimation] = useState<{
     gridRow: number;
     display: string;
