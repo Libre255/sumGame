@@ -1,13 +1,14 @@
 import { useEffect, useState, useMemo } from "react";
 import useKeyPressed from "./useKeyPressed";
 import shuffleArray from "../Methods/shuffleArray";
-import { action, ACTIONS } from "../Methods/GamePlayReducer";
+import { ACTIONS } from "../Methods/GamePlayReducer";
+import { Action } from "../Methods/GamePlayeReducerTypes";
 
 const upComingBoxes: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; //This can be remplaced with fetch from database
 
 const useControlNr = (
   readyToShot: { itsReady2Shoot: boolean; gameStarted: boolean },
-  dispatch: React.Dispatch<action>
+  dispatch: React.Dispatch<Action>
 ) => {
   const [randomNr, setRandomNr] = useState<number>(
     upComingBoxes[Math.floor(Math.random() * upComingBoxes.length)]
@@ -24,7 +25,7 @@ const useControlNr = (
   }
   useMemo(() => {
     if (readyToShot.itsReady2Shoot && readyToShot.gameStarted) {
-      dispatch({ type: ACTIONS.UPDATE_TOP_ARRAY });
+      dispatch({ type: ACTIONS.UPDATE_CONTAINER_OF_ROWS });
       randomizeUpcomingBox();
     }
   }, [readyToShot, dispatch]);

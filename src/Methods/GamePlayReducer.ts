@@ -1,80 +1,74 @@
-interface initialStateType {
-  verticalTopBoxesIndex: [number, number, number, number, number];
-  TopBoxesArray: { value: number; AmountTimesAdded: number }[][];
-  bottomBoxPosition: number;
-  selectedNr: number;
-}
+import {
+  BoxProperties,
+  InitialStateType,
+  ACTIONStype,
+  Action,
+} from "./GamePlayeReducerTypes";
 
-export interface action {
-  type: string;
-  selectedNr?: number;
-}
-const ACTIONS = {
-  UPDATE_TOP_ARRAY: "update Top Boxes Array",
-  UPDATE_verticalBoxArrayIndex: "selects array inside TopBoxesArray",
+const ACTIONS: ACTIONStype = {
+  UPDATE_CONTAINER_OF_ROWS: "update container of rows",
+  UPDATE_columnsVerticalIndexes: "selects row inside container of Rows",
   UPDATE_SELECTED_NR: "update selected number",
   Left_BottomPosition: "Move bottomposition to the left",
   Right_BottomPosition: "Move bottomposition to the right",
 };
 
-const TopBoxesArrayConstructor = () => [
+const RowConstructor = (): BoxProperties[] => [
   { value: 0, AmountTimesAdded: 0 },
   { value: 0, AmountTimesAdded: 0 },
   { value: 0, AmountTimesAdded: 0 },
   { value: 0, AmountTimesAdded: 0 },
   { value: 0, AmountTimesAdded: 0 },
 ];
-const initialState: initialStateType = {
-  verticalTopBoxesIndex: [0, 0, 0, 0, 0],
-  TopBoxesArray: [TopBoxesArrayConstructor()],
+const initialState: InitialStateType = {
+  columnsVerticalIndexes: [0, 0, 0, 0, 0],
+  containerOfRows: [RowConstructor()],
   bottomBoxPosition: 1,
   selectedNr: 0,
 };
 
-const reducer = (state: initialStateType, action: action) => {
-  const updateVerticalTopBoxesIndex = () => {
-    return state.verticalTopBoxesIndex.map((verticalArray, index) =>
-      index === state.bottomBoxPosition - 1
-        ? (verticalArray += 1)
-        : verticalArray
+const reducer = (state: InitialStateType, action: Action) => {
+  const rowHorizontalIndex = state.bottomBoxPosition - 1;
+  const columnVerticalIndex = state.columnsVerticalIndexes[rowHorizontalIndex];
+
+  const updateColumnsVerticalIndexes = () => {
+    return state.columnsVerticalIndexes.map((columnVertical_Index, index) =>
+      index === rowHorizontalIndex
+        ? (columnVertical_Index += 1)
+        : columnVertical_Index
     ) as [number, number, number, number, number];
   };
-  const updateTopBoxesArray = () => {
-    let updateVertical = false;
-    const horizontalTopBoxesSelection = state.bottomBoxPosition - 1;
-    const verticalTopBoxesSelection =
-      state.verticalTopBoxesIndex[horizontalTopBoxesSelection];
-    const updateTopBoxArrayNrs = state.TopBoxesArray.map((BoxArray, index) => {
-      if (index === verticalTopBoxesSelection) {
-        return BoxArray.map((Box, index) => {
-          if (index === horizontalTopBoxesSelection) {
-            const updateBox = {
+  const updateContainerOfRows = () => {
+    let updateColumnVerticalIndex = false;
+
+    const updateNumberInsideOfARow = state.containerOfRows.map((Row, index) => {
+      if (index === columnVerticalIndex) {
+        return Row.map((Box, index) => {
+          if (index === rowHorizontalIndex) {
+            const updatedBox = {
               value: state.selectedNr,
               AmountTimesAdded: Box.AmountTimesAdded + 1,
             };
-            if (updateBox.AmountTimesAdded === 3) {
-              updateVertical = true;
-              return updateBox;
-            } else return updateBox;
+            if (updatedBox.AmountTimesAdded === 3) {
+              updateColumnVerticalIndex = true;
+              return updatedBox;
+            } else return updatedBox;
           } else return Box;
         });
-      } else return BoxArray;
+      } else return Row;
     });
 
     if (state.selectedNr === 0) {
       return { ...state };
-    } else if (updateVertical) {
-      const addAnotherTopBoxArray = [
-        ...updateTopBoxArrayNrs,
-        TopBoxesArrayConstructor(),
-      ];
+    } else if (updateColumnVerticalIndex) {
+      const addAnotherRow = [...updateNumberInsideOfARow, RowConstructor()];
       return {
         ...state,
-        TopBoxesArray: addAnotherTopBoxArray,
-        verticalTopBoxesIndex: updateVerticalTopBoxesIndex(),
+        containerOfRows: addAnotherRow,
+        columnsVerticalIndexes: updateColumnsVerticalIndexes(),
       };
     } else {
-      return { ...state, TopBoxesArray: updateTopBoxArrayNrs };
+      return { ...state, containerOfRows: updateNumberInsideOfARow };
     }
   };
   const updateSelectedNr = () =>
@@ -91,8 +85,8 @@ const reducer = (state: initialStateType, action: action) => {
       : { ...state, bottomBoxPosition: state.bottomBoxPosition + 1 };
 
   switch (action.type) {
-    case ACTIONS.UPDATE_TOP_ARRAY:
-      return updateTopBoxesArray();
+    case ACTIONS.UPDATE_CONTAINER_OF_ROWS:
+      return updateContainerOfRows();
     case ACTIONS.UPDATE_SELECTED_NR:
       return updateSelectedNr();
     case ACTIONS.Left_BottomPosition:
