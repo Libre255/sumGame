@@ -15,7 +15,7 @@ export interface Action {
   selectedNr?: number;
 }
 
-export interface ACTIONStype {
+export interface COMMANDstype {
   UPDATE_CONTAINER_OF_ROWS: string;
   UPDATE_columnsVerticalIndexes: string;
   UPDATE_SELECTED_NR: string;

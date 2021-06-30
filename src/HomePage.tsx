@@ -1,6 +1,6 @@
 import React from "react";
-import Menu from "./Menu/Menu";
-import Gameplay from "./Components/Gameplay";
+import Menu from "./Menu/components/Menu";
+import Gameplay from "./Gameplay/Gameplay";
 
 const HomePage: React.FC = () => {
   return (

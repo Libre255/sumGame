@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import useKeyPressed from "./useKeyPressed";
-import { ACTIONS } from "../Methods/GamePlayReducer";
-import { Action } from "../Methods/GamePlayeReducerTypes";
+import { COMMANDS } from "../../gamePlayManagement/reducer/GamePlayReducer";
+import { Action } from "../../gamePlayManagement/reducer/GamePlayeReducerTypes";
 
 const useControlMovements = (dispatch: React.Dispatch<Action>) => {
   const [shotAnimation, setShotAnimation] = useState<{
@@ -19,9 +19,9 @@ const useControlMovements = (dispatch: React.Dispatch<Action>) => {
 
   useEffect(() => {
     if (leftKey) {
-      dispatch({ type: ACTIONS.Left_BottomPosition });
+      dispatch({ type: COMMANDS.Left_BottomPosition });
     } else if (rightkey) {
-      dispatch({ type: ACTIONS.Right_BottomPosition });
+      dispatch({ type: COMMANDS.Right_BottomPosition });
     }
   }, [leftKey, rightkey, dispatch]);
 

@@ -1,9 +1,12 @@
 import React, { useReducer } from "react";
-import useControlNr from "../Hooks/useControlNr";
-import useControlMovements from "../Hooks/useControlMovements";
-import Box from "./Box";
-import { initialState, reducer } from "../Methods/GamePlayReducer";
-import Controller from "./Controller";
+import useRandomNr from "./controller/hooks/useRandomNr";
+import useControlMovements from "./controller/hooks/useControlMovements";
+import Box from "./gamePlayManagement/components/Box";
+import {
+  initialState,
+  reducer,
+} from "./gamePlayManagement/reducer/GamePlayReducer";
+import ControllerContainer from "./controller/components/ControllerContainer";
 
 const Gameplay: React.FC = () => {
   const [
@@ -11,7 +14,7 @@ const Gameplay: React.FC = () => {
     dispatch,
   ] = useReducer(reducer, initialState);
   const { shotAnimation, readyToShot } = useControlMovements(dispatch);
-  const { randomNr } = useControlNr(readyToShot, dispatch);
+  const { randomNr } = useRandomNr(readyToShot, dispatch);
 
   return (
     <div id="GamePlayWindow" className="testBox2 ">
@@ -29,7 +32,9 @@ const Gameplay: React.FC = () => {
       >
         {selectedNr}
       </div>
-      <Controller useControl={[selectedNr, randomNr, bottomBoxPosition]} />
+      <ControllerContainer
+        useControl={[selectedNr, randomNr, bottomBoxPosition]}
+      />
     </div>
   );
 };

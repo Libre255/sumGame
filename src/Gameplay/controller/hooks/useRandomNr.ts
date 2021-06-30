@@ -1,12 +1,12 @@
 import { useEffect, useState, useMemo } from "react";
 import useKeyPressed from "./useKeyPressed";
 import shuffleArray from "../Methods/shuffleArray";
-import { ACTIONS } from "../Methods/GamePlayReducer";
-import { Action } from "../Methods/GamePlayeReducerTypes";
+import { COMMANDS } from "../../gamePlayManagement/reducer/GamePlayReducer";
+import { Action } from "../../gamePlayManagement/reducer/GamePlayeReducerTypes";
 
 const upComingBoxes: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; //This can be remplaced with fetch from database
 
-const useControlNr = (
+const useRandomNr = (
   readyToShot: { itsReady2Shoot: boolean; gameStarted: boolean },
   dispatch: React.Dispatch<Action>
 ) => {
@@ -25,7 +25,7 @@ const useControlNr = (
   }
   useMemo(() => {
     if (readyToShot.itsReady2Shoot && readyToShot.gameStarted) {
-      dispatch({ type: ACTIONS.UPDATE_CONTAINER_OF_ROWS });
+      dispatch({ type: COMMANDS.UPDATE_CONTAINER_OF_ROWS });
       randomizeUpcomingBox();
     }
   }, [readyToShot, dispatch]);
@@ -38,11 +38,11 @@ const useControlNr = (
 
   useEffect(() => {
     if (z_Key_Pressed && readyToShot.itsReady2Shoot) {
-      dispatch({ type: ACTIONS.UPDATE_SELECTED_NR, selectedNr: randomNr });
+      dispatch({ type: COMMANDS.UPDATE_SELECTED_NR, selectedNr: randomNr });
     }
   }, [z_Key_Pressed, readyToShot, randomNr, dispatch]);
 
   return { randomNr };
 };
 
-export default useControlNr;
+export default useRandomNr;
