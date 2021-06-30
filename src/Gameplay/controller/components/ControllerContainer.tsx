@@ -5,7 +5,7 @@ interface ControllerProps {
   useControl: number[];
 }
 
-const Controller = ({ useControl }: ControllerProps) => {
+const ControllerContainer = ({ useControl }: ControllerProps) => {
   const [selectedNr, randomNr, bottomBoxPosition] = useControl;
 
   return (
@@ -16,4 +16,4 @@ const Controller = ({ useControl }: ControllerProps) => {
   );
 };
 
-export default Controller;
+export default ControllerContainer;

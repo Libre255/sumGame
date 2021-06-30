@@ -1,17 +1,26 @@
 import { useState, useEffect } from "react";
 import useKeyPressed from "./useKeyPressed";
-import { ACTIONS } from "../Methods/GamePlayReducer";
-import { Action } from "../Methods/GamePlayeReducerTypes";
+import { COMMANDS } from "../reducer/GamePlayReducer";
+import { Action } from "../reducer/GamePlayeReducerTypes";
+
+export interface ShotAnimationType {
+  gridRow: number;
+  display: string;
+}
+export interface ReadyToshotType {
+  itsReady2Shoot: boolean;
+  gameStarted: boolean;
+}
 
 const useControlMovements = (dispatch: React.Dispatch<Action>) => {
-  const [shotAnimation, setShotAnimation] = useState<{
-    gridRow: number;
-    display: string;
-  }>({ gridRow: 5, display: "none" });
-  const [readyToShot, setReadyToShot] = useState<{
-    itsReady2Shoot: boolean;
-    gameStarted: boolean;
-  }>({ itsReady2Shoot: true, gameStarted: false });
+  const [shotAnimation, setShotAnimation] = useState<ShotAnimationType>({
+    gridRow: 5,
+    display: "none",
+  });
+  const [readyToShot, setReadyToShot] = useState<ReadyToshotType>({
+    itsReady2Shoot: true,
+    gameStarted: false,
+  });
 
   const rightkey = useKeyPressed("ArrowRight");
   const leftKey = useKeyPressed("ArrowLeft");
@@ -19,9 +28,9 @@ const useControlMovements = (dispatch: React.Dispatch<Action>) => {
 
   useEffect(() => {
     if (leftKey) {
-      dispatch({ type: ACTIONS.Left_BottomPosition });
+      dispatch({ type: COMMANDS.Left_BottomPosition });
     } else if (rightkey) {
-      dispatch({ type: ACTIONS.Right_BottomPosition });
+      dispatch({ type: COMMANDS.Right_BottomPosition });
     }
   }, [leftKey, rightkey, dispatch]);
 
