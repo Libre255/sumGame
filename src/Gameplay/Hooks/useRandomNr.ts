@@ -1,8 +1,8 @@
 import { useEffect, useState, useMemo } from "react";
 import useKeyPressed from "./useKeyPressed";
 import shuffleArray from "../Methods/shuffleArray";
-import { COMMANDS } from "../../gamePlayManagement/reducer/GamePlayReducer";
-import { Action } from "../../gamePlayManagement/reducer/GamePlayeReducerTypes";
+import { COMMANDS } from "../reducer/GamePlayReducer";
+import { Action } from "../reducer/GamePlayeReducerTypes";
 
 const upComingBoxes: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; //This can be remplaced with fetch from database
 

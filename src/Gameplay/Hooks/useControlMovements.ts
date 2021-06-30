@@ -1,17 +1,26 @@
 import { useState, useEffect } from "react";
 import useKeyPressed from "./useKeyPressed";
-import { COMMANDS } from "../../gamePlayManagement/reducer/GamePlayReducer";
-import { Action } from "../../gamePlayManagement/reducer/GamePlayeReducerTypes";
+import { COMMANDS } from "../reducer/GamePlayReducer";
+import { Action } from "../reducer/GamePlayeReducerTypes";
+
+export interface ShotAnimationType {
+  gridRow: number;
+  display: string;
+}
+export interface ReadyToshotType {
+  itsReady2Shoot: boolean;
+  gameStarted: boolean;
+}
 
 const useControlMovements = (dispatch: React.Dispatch<Action>) => {
-  const [shotAnimation, setShotAnimation] = useState<{
-    gridRow: number;
-    display: string;
-  }>({ gridRow: 5, display: "none" });
-  const [readyToShot, setReadyToShot] = useState<{
-    itsReady2Shoot: boolean;
-    gameStarted: boolean;
-  }>({ itsReady2Shoot: true, gameStarted: false });
+  const [shotAnimation, setShotAnimation] = useState<ShotAnimationType>({
+    gridRow: 5,
+    display: "none",
+  });
+  const [readyToShot, setReadyToShot] = useState<ReadyToshotType>({
+    itsReady2Shoot: true,
+    gameStarted: false,
+  });
 
   const rightkey = useKeyPressed("ArrowRight");
   const leftKey = useKeyPressed("ArrowLeft");

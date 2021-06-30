@@ -1,12 +1,10 @@
 import React, { useReducer } from "react";
-import useRandomNr from "./controller/hooks/useRandomNr";
-import useControlMovements from "./controller/hooks/useControlMovements";
 import Box from "./gamePlayManagement/components/Box";
-import {
-  initialState,
-  reducer,
-} from "./gamePlayManagement/reducer/GamePlayReducer";
 import ControllerContainer from "./controller/components/ControllerContainer";
+import ShotBoxAnimation from "./boxShotAnimation/ShotBoxAnimation";
+import useRandomNr from "./Hooks/useRandomNr";
+import useControlMovements from "./Hooks/useControlMovements";
+import { initialState, reducer } from "./reducer/GamePlayReducer";
 
 const Gameplay: React.FC = () => {
   const [
@@ -25,13 +23,11 @@ const Gameplay: React.FC = () => {
           ))}
         </div>
       ))}
-      <div
-        id="Animation_BoxContainer"
-        className="testBox GlobalStyleNrs"
-        style={{ ...shotAnimation, gridColumn: bottomBoxPosition }}
-      >
-        {selectedNr}
-      </div>
+      <ShotBoxAnimation
+        selectedNr={selectedNr}
+        shotAnimation={shotAnimation}
+        bottomBoxPosition={bottomBoxPosition}
+      />
       <ControllerContainer
         useControl={[selectedNr, randomNr, bottomBoxPosition]}
       />
