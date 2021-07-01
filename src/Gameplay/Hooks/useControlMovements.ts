@@ -1,18 +1,13 @@
 import { useState, useEffect } from "react";
 import useKeyPressed from "./useKeyPressed";
 import { COMMANDS } from "../reducer/GamePlayReducer";
-import { Action } from "../reducer/GamePlayeReducerTypes";
+import {
+  Props,
+  ReadyToshotType,
+  ShotAnimationType,
+} from "../interfaces/controlMovementsTypes";
 
-export interface ShotAnimationType {
-  gridRow: number;
-  display: string;
-}
-export interface ReadyToshotType {
-  itsReady2Shoot: boolean;
-  gameStarted: boolean;
-}
-
-const useControlMovements = (dispatch: React.Dispatch<Action>) => {
+const useControlMovements = ({ dispatch }: Props) => {
   const [shotAnimation, setShotAnimation] = useState<ShotAnimationType>({
     gridRow: 5,
     display: "none",

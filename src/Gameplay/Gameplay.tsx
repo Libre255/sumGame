@@ -11,8 +11,8 @@ const Gameplay: React.FC = () => {
     { selectedNr, containerOfRows, bottomBoxPosition },
     dispatch,
   ] = useReducer(reducer, initialState);
-  const { shotAnimation, readyToShot } = useControlMovements(dispatch);
-  const { randomNr } = useRandomNr(readyToShot, dispatch);
+  const { shotAnimation, readyToShot } = useControlMovements({ dispatch });
+  const { randomNr } = useRandomNr({ readyToShot, dispatch });
 
   return (
     <div id="GamePlayWindow" className="testBox2 ">

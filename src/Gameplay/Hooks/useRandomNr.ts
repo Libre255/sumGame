@@ -1,38 +1,29 @@
 import { useEffect, useState, useMemo } from "react";
 import useKeyPressed from "./useKeyPressed";
-import shuffleArray from "../Methods/shuffleArray";
 import { COMMANDS } from "../reducer/GamePlayReducer";
-import { Action } from "../reducer/GamePlayeReducerTypes";
+import { Props } from "../interfaces/randomNrTypes";
+import { randomizeUpcomingBox } from "../Methods/randomizeUpcomingBox";
 
 const upComingBoxes: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; //This can be remplaced with fetch from database
 
-const useRandomNr = (
-  readyToShot: { itsReady2Shoot: boolean; gameStarted: boolean },
-  dispatch: React.Dispatch<Action>
-) => {
+const useRandomNr = ({ dispatch, readyToShot }: Props) => {
   const [randomNr, setRandomNr] = useState<number>(
-    upComingBoxes[Math.floor(Math.random() * upComingBoxes.length)]
+    randomizeUpcomingBox(upComingBoxes)
   );
 
   const z_Key_Pressed = useKeyPressed("z");
   const c_Key_Pressed = useKeyPressed("c");
 
-  function randomizeUpcomingBox() {
-    const shuffleArr = shuffleArray(upComingBoxes);
-    const grabRandomNr =
-      shuffleArr[Math.floor(Math.random() * shuffleArr.length)];
-    setRandomNr(grabRandomNr);
-  }
   useMemo(() => {
     if (readyToShot.itsReady2Shoot && readyToShot.gameStarted) {
       dispatch({ type: COMMANDS.UPDATE_CONTAINER_OF_ROWS });
-      randomizeUpcomingBox();
+      setRandomNr(randomizeUpcomingBox(upComingBoxes));
     }
   }, [readyToShot, dispatch]);
 
   useEffect(() => {
     if (c_Key_Pressed && readyToShot.itsReady2Shoot) {
-      randomizeUpcomingBox();
+      setRandomNr(randomizeUpcomingBox(upComingBoxes));
     }
   }, [c_Key_Pressed, readyToShot]);
 
