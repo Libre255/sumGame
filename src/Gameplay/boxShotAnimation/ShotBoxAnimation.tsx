@@ -1,5 +1,5 @@
 import React from "react";
-import { ShotAnimationType } from "../Hooks/useControlMovements";
+import { ShotAnimationType } from "../interfaces/controlMovementsTypes";
 
 interface Props {
   shotAnimation: ShotAnimationType;
