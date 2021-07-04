@@ -44,7 +44,7 @@ const updateBox = (state: InitialStateType,
       )
     }}
   }else{
-    return {checkIf3Times, updatedState:{...state, containerOfRows: updateNumberInsideOfARow}}
+    return {checkIf3Times, columHasBeenFilled, updatedState:{...state, containerOfRows: updateNumberInsideOfARow}}
   }
 }
 

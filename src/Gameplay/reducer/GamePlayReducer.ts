@@ -8,7 +8,6 @@ import {
   checkColumnStatus,
   moveLeft,
   moveRight,
-  updateBox,
   updateSelectedNr,
 } from "./reducerFunctions";
 
