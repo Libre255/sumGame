@@ -54,9 +54,9 @@ const addAnotherArray = (state: InitialStateType,
   const containerRow = mystate.containerOfRows
   
 
-  const allare0 = containerRow[containerRow.length -1].every(boxValue => boxValue.value  === 0)
-    console.log(allare0)
-  if(checkIf3Times === 3 && !allare0){
+  const columHasBeenFilled = containerRow[containerRow.length -1][rowHorizontalIndex].value === 0 ? false: true;
+    console.log(columHasBeenFilled)
+  if(checkIf3Times === 3 && columHasBeenFilled){
     return {
       ...mystate,
       containerOfRows:[...mystate.containerOfRows, RowConstructor()]
