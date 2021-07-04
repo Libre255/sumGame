@@ -45,6 +45,28 @@ const updateBox = (state: InitialStateType,
   }
 }
 
+const addAnotherArray = (state: InitialStateType,
+  columnVerticalIndex: number,
+  rowHorizontalIndex: number)=>{
+
+  const mystate = updateBox(state, columnVerticalIndex, rowHorizontalIndex)
+  const checkIf3Times = mystate.containerOfRows[columnVerticalIndex][rowHorizontalIndex].AmountTimesAdded
+  const containerRow = mystate.containerOfRows
+  
+
+  const allare0 = containerRow[containerRow.length -1].every(boxValue => boxValue.value  === 0)
+    console.log(allare0)
+  if(checkIf3Times === 3 && !allare0){
+    return {
+      ...mystate,
+      containerOfRows:[...mystate.containerOfRows, RowConstructor()]
+    }
+  }else{
+    return mystate
+  }
+}
+
+
 const updateSelectedNr = (state: InitialStateType, action: Action) =>
   action.selectedNr
     ? { ...state, selectedNr: action.selectedNr }
@@ -65,5 +87,6 @@ export {
   moveRight,
   updateColumnsVerticalIndexes,
   updateSelectedNr,
-  updateBox
+  updateBox,
+  addAnotherArray
 };
