@@ -12,46 +12,38 @@ const updateColumnsVerticalIndexes = (
   ) as [number, number, number, number, number];
 };
 
-const updateContainerOfRows = (
-  state: InitialStateType,
+const updateBox = (state: InitialStateType,
   columnVerticalIndex: number,
-  rowHorizontalIndex: number
-) => {
-  let updateColumnVerticalIndex = false;
-
-  const updateNumberInsideOfARow = state.containerOfRows.map((Row, index) => {
-    if (index === columnVerticalIndex) {
-      return Row.map((Box, index) => {
-        if (index === rowHorizontalIndex) {
+  rowHorizontalIndex: number)=>{
+  
+  const updateNumberInsideOfARow = state.containerOfRows.map((Row, rowIndex) => {
+    if (rowIndex === columnVerticalIndex) {
+      return Row.map((boxValues, boxIndex) => {
+        if (boxIndex === rowHorizontalIndex) {
           const updatedBox = {
             value: state.selectedNr,
-            AmountTimesAdded: Box.AmountTimesAdded + 1,
+            AmountTimesAdded: boxValues.AmountTimesAdded + 1,
           };
-          if (updatedBox.AmountTimesAdded === 3) {
-            updateColumnVerticalIndex = true;
-            return updatedBox;
-          } else return updatedBox;
-        } else return Box;
+          return updatedBox
+        } else return boxValues;
       });
     } else return Row;
   });
-
-  if (state.selectedNr === 0) {
-    return { ...state };
-  } else if (updateColumnVerticalIndex) {
-    const addAnotherRow = [...updateNumberInsideOfARow, RowConstructor()];
+  const checkIf3Times = updateNumberInsideOfARow[columnVerticalIndex][rowHorizontalIndex].AmountTimesAdded
+ 
+  if(checkIf3Times === 3){
     return {
       ...state,
-      containerOfRows: addAnotherRow,
+      containerOfRows:updateNumberInsideOfARow,
       columnsVerticalIndexes: updateColumnsVerticalIndexes(
         state,
         rowHorizontalIndex
-      ),
-    };
-  } else {
-    return { ...state, containerOfRows: updateNumberInsideOfARow };
+      )
+    }
+  }else{
+    return {...state, containerOfRows: updateNumberInsideOfARow}
   }
-};
+}
 
 const updateSelectedNr = (state: InitialStateType, action: Action) =>
   action.selectedNr
@@ -72,6 +64,6 @@ export {
   moveLeft,
   moveRight,
   updateColumnsVerticalIndexes,
-  updateContainerOfRows,
   updateSelectedNr,
+  updateBox
 };

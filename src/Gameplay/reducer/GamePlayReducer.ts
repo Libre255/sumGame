@@ -7,7 +7,7 @@ import { RowConstructor } from "./methods/rowConstructor";
 import {
   moveLeft,
   moveRight,
-  updateContainerOfRows,
+  updateBox,
   updateSelectedNr,
 } from "./reducerFunctions";
 
@@ -32,7 +32,7 @@ const reducer = (state: InitialStateType, action: Action) => {
 
   switch (action.type) {
     case COMMANDS.UPDATE_CONTAINER_OF_ROWS:
-      return updateContainerOfRows(
+      return updateBox(
         state,
         columnVerticalIndex,
         rowHorizontalIndex
