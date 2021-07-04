@@ -44,14 +44,14 @@ const useControlMovements = ({ dispatch }: Props) => {
           animationKeyFrame--;
           setShotAnimation((pv) => ({ ...pv, gridRow: animationKeyFrame }));
         }
-      }, 500);
+      }, 100);
 
       return () => {
         setTimeout(() => {
           clearInterval(animation);
           setShotAnimation((pv) => ({ ...pv, gridRow: 5, display: "none" }));
           setReadyToShot((pv) => ({ ...pv, itsReady2Shoot: true }));
-        }, 2000);
+        }, 500);
       };
     }
   }, [x_Key_Pressed, readyToShot]);

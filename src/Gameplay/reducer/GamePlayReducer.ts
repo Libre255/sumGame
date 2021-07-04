@@ -5,7 +5,7 @@ import {
 } from "./GamePlayeReducerTypes";
 import { RowConstructor } from "./methods/rowConstructor";
 import {
-  addAnotherArray,
+  checkColumnStatus,
   moveLeft,
   moveRight,
   updateBox,
@@ -33,7 +33,7 @@ const reducer = (state: InitialStateType, action: Action) => {
 
   switch (action.type) {
     case COMMANDS.UPDATE_CONTAINER_OF_ROWS:
-      return addAnotherArray(
+      return checkColumnStatus(
         state,
         columnVerticalIndex,
         rowHorizontalIndex

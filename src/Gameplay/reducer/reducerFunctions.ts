@@ -30,9 +30,11 @@ const updateBox = (state: InitialStateType,
     } else return Row;
   });
   const checkIf3Times = updateNumberInsideOfARow[columnVerticalIndex][rowHorizontalIndex].AmountTimesAdded === 3 ? true : false
- 
+  const columHasBeenFilled = updateNumberInsideOfARow[updateNumberInsideOfARow.length -1][rowHorizontalIndex].value === 0 ? false: true;
+  
   if(checkIf3Times){
     return {checkIf3Times,
+      columHasBeenFilled,
       updatedState:{
       ...state,
       containerOfRows:updateNumberInsideOfARow,
@@ -46,19 +48,16 @@ const updateBox = (state: InitialStateType,
   }
 }
 
-const addAnotherArray = (state: InitialStateType,
+const checkColumnStatus = (state: InitialStateType,
   columnVerticalIndex: number,
   rowHorizontalIndex: number)=>{
 
-  const {checkIf3Times, updatedState} = updateBox(state, columnVerticalIndex, rowHorizontalIndex)
-  const containerRow = updatedState.containerOfRows
-  const columHasBeenFilled = containerRow[containerRow.length -1][rowHorizontalIndex].value === 0 ? false: true;
-  console.log(columHasBeenFilled)
+  const {checkIf3Times, columHasBeenFilled ,updatedState} = updateBox(state, columnVerticalIndex, rowHorizontalIndex)
   
   if(checkIf3Times && columHasBeenFilled){
     return {
       ...updatedState,
-      containerOfRows:[...containerRow, RowConstructor()]
+      containerOfRows:[...updatedState.containerOfRows, RowConstructor()]
     }
   }else{
     return updatedState
@@ -87,5 +86,5 @@ export {
   updateColumnsVerticalIndexes,
   updateSelectedNr,
   updateBox,
-  addAnotherArray
+  checkColumnStatus
 };
