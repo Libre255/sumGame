@@ -56,15 +56,10 @@ const checkColumnStatus = (state: InitialStateType,
   columnVerticalIndex: number,
   rowHorizontalIndex: number)=>{
 
-  const {checkIf3Times, columHasBeenFilled ,updatedState} = updateBox(state, columnVerticalIndex, rowHorizontalIndex)
-  const checkv2 = updatedState.containerOfRows[updatedState.containerOfRows.length -1][rowHorizontalIndex].AmountTimesAdded === 3? true : false
+  const {checkIf3Times, columHasBeenFilled, updatedState} = updateBox(state, columnVerticalIndex, rowHorizontalIndex)
 
-  let once1 = true
-  if(state.containerOfRows.length  === 4 && checkv2 && once1){
-    once1 = false
+  if(state.containerOfRows.length  === 4){
     return updatedState
-  }else if(state.containerOfRows.length  === 4 && checkv2 && !once1){
-    return state
   }else{
     if(checkIf3Times && columHasBeenFilled){
       return {
