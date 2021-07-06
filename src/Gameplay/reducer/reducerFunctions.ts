@@ -29,6 +29,10 @@ const updateBox = (state: InitialStateType,
       });
     } else return Row;
   });
+
+  if(!updateNumberInsideOfARow[columnVerticalIndex]){
+    return {updatedState:{...state}}
+  }
   const checkIf3Times = updateNumberInsideOfARow[columnVerticalIndex][rowHorizontalIndex].AmountTimesAdded === 3 ? true : false
   const columHasBeenFilled = updateNumberInsideOfARow[updateNumberInsideOfARow.length -1][rowHorizontalIndex].value === 0 ? false: true;
   
@@ -53,14 +57,23 @@ const checkColumnStatus = (state: InitialStateType,
   rowHorizontalIndex: number)=>{
 
   const {checkIf3Times, columHasBeenFilled ,updatedState} = updateBox(state, columnVerticalIndex, rowHorizontalIndex)
-  
-  if(checkIf3Times && columHasBeenFilled){
-    return {
-      ...updatedState,
-      containerOfRows:[...updatedState.containerOfRows, RowConstructor()]
-    }
-  }else{
+  const checkv2 = updatedState.containerOfRows[updatedState.containerOfRows.length -1][rowHorizontalIndex].AmountTimesAdded === 3? true : false
+
+  let once1 = true
+  if(state.containerOfRows.length  === 4 && checkv2 && once1){
+    once1 = false
     return updatedState
+  }else if(state.containerOfRows.length  === 4 && checkv2 && !once1){
+    return state
+  }else{
+    if(checkIf3Times && columHasBeenFilled){
+      return {
+        ...updatedState,
+        containerOfRows:[...updatedState.containerOfRows, RowConstructor()]
+      }
+    }else{
+      return updatedState
+    }
   }
 }
 
