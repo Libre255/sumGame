@@ -29,6 +29,10 @@ const updateBox = (state: InitialStateType,
       });
     } else return Row;
   });
+
+  if(!updateNumberInsideOfARow[columnVerticalIndex]){
+    return { updatedState:{...state}}
+  }
   const checkIf3Times = updateNumberInsideOfARow[columnVerticalIndex][rowHorizontalIndex].AmountTimesAdded === 3 ? true : false
   const columHasBeenFilled = updateNumberInsideOfARow[updateNumberInsideOfARow.length -1][rowHorizontalIndex].value === 0 ? false: true;
   
@@ -52,18 +56,22 @@ const checkColumnStatus = (state: InitialStateType,
   columnVerticalIndex: number,
   rowHorizontalIndex: number)=>{
 
-  const {checkIf3Times, columHasBeenFilled ,updatedState} = updateBox(state, columnVerticalIndex, rowHorizontalIndex)
+  const {checkIf3Times, columHasBeenFilled, updatedState} = updateBox(state, columnVerticalIndex, rowHorizontalIndex)
+  const reachedMaxRows = state.containerOfRows.length  === 4
   
-  if(checkIf3Times && columHasBeenFilled){
-    return {
-      ...updatedState,
-      containerOfRows:[...updatedState.containerOfRows, RowConstructor()]
-    }
-  }else{
+  if(reachedMaxRows){
     return updatedState
+  }else{
+    if(checkIf3Times && columHasBeenFilled){
+      return {
+        ...updatedState,
+        containerOfRows:[...updatedState.containerOfRows, RowConstructor()]
+      }
+    }else{
+      return updatedState
+    }
   }
 }
-
 
 const updateSelectedNr = (state: InitialStateType, action: Action) =>
   action.selectedNr
