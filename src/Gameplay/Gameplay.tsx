@@ -23,6 +23,7 @@ const Gameplay: React.FC = () => {
           ))}
         </div>
       ))}
+      
       <ShotBoxAnimation
         selectedNr={selectedNr}
         shotAnimation={shotAnimation}
