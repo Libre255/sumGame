@@ -94,6 +94,13 @@
   color: bisque;
 }
 
+#GamePlayWindow #SumTheRow {
+  -ms-grid-column: 6;
+  -ms-grid-column-span: 1;
+  grid-column: 6/7;
+  border: 1px solid gold;
+}
+
 body {
   background-color: black;
   color: white;

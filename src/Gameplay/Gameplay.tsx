@@ -5,6 +5,7 @@ import ShotBoxAnimation from "./boxShotAnimation/ShotBoxAnimation";
 import useRandomNr from "./Hooks/useRandomNr";
 import useControlMovements from "./Hooks/useControlMovements";
 import { initialState, reducer } from "./reducer/GamePlayReducer";
+import TheTotalSumBox from "./gamePlayManagement/components/TheTotalSumBox";
 
 const Gameplay: React.FC = () => {
   const [
@@ -13,17 +14,17 @@ const Gameplay: React.FC = () => {
   ] = useReducer(reducer, initialState);
   const { shotAnimation, readyToShot } = useControlMovements({ dispatch });
   const { randomNr } = useRandomNr({ readyToShot, dispatch });
-
+  
   return (
     <div id="GamePlayWindow" className="testBox2 ">
       {containerOfRows.map((row, index) => (
         <div key={index} className="RowStyle" style={{ gridRow: index + 1 }}>
           {row.map((box, index) => (
-            <Box key={index} boxValue={box.value} amountTimesAdded={box.AmountTimesAdded} />
+             <Box key={index} boxValue={box.value} amountTimesAdded={box.AmountTimesAdded} />
           ))}
         </div>
       ))}
-      
+      <TheTotalSumBox containerOfRows={containerOfRows}/>
       <ShotBoxAnimation
         selectedNr={selectedNr}
         shotAnimation={shotAnimation}
