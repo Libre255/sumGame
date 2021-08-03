@@ -85,6 +85,15 @@
   width: 20%;
 }
 
+#GamePlayWindow .RowStyle .Box .amountTimesAdded-Box {
+  position: absolute;
+  z-index: 1;
+  font-size: 2.3vw;
+  border: 1px solid pink;
+  line-height: 1;
+  color: bisque;
+}
+
 body {
   background-color: black;
   color: white;
