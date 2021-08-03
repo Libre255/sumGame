@@ -12,7 +12,6 @@ const useRandomNr = ({ dispatch, readyToShot }: Props) => {
   );
 
   const z_Key_Pressed = useKeyPressed("z");
-  const c_Key_Pressed = useKeyPressed("c");
 
   useMemo(() => {
     if (readyToShot.itsReady2Shoot && readyToShot.gameStarted) {
@@ -20,12 +19,6 @@ const useRandomNr = ({ dispatch, readyToShot }: Props) => {
       setRandomNr(randomizeUpcomingBox(upComingBoxes));
     }
   }, [readyToShot, dispatch]);
-
-  useEffect(() => {
-    if (c_Key_Pressed && readyToShot.itsReady2Shoot) {
-      setRandomNr(randomizeUpcomingBox(upComingBoxes));
-    }
-  }, [c_Key_Pressed, readyToShot]);
 
   useEffect(() => {
     if (z_Key_Pressed && readyToShot.itsReady2Shoot) {

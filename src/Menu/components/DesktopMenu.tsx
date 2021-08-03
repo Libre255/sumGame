@@ -37,8 +37,6 @@ const DesktopMainMenu = () => {
           >
             Use the keyboard arrows/fingers to move the piece
             {<br />}
-            Use Space c to throw the next piece.
-            {<br />}
             Use x to push the piece to the top
             {<br />}
             Use z to grab next piece
