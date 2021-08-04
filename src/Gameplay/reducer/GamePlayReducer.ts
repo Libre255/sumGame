@@ -1,3 +1,4 @@
+import { randomizeUpcomingBox } from "../Methods/randomizeUpcomingBox";
 import {
   InitialStateType,
   COMMANDstype,
@@ -23,7 +24,7 @@ const initialState: InitialStateType = {
   columnsVerticalIndexes: [0, 0, 0, 0, 0],
   containerOfRows: [RowConstructor()],
   bottomBoxPosition: 1,
-  selectedNr: 0,
+  selectedNr: randomizeUpcomingBox()
 };
 
 const reducer = (state: InitialStateType, action: Action) => {

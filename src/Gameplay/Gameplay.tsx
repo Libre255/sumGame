@@ -21,7 +21,7 @@ const Gameplay: React.FC<Props> = ({setTotalSumScore}) => {
     dispatch,
   ] = useReducer(reducer, initialState);
   const { shotAnimation, readyToShot } = useControlMovements({ dispatch, columnsVerticalIndexes, bottomBoxPosition });
-  const { randomNr } = useRandomNr({ readyToShot, dispatch });
+  const { randomNr } = useRandomNr({ readyToShot, dispatch, selectedNr });
   useCountTotalSum({containerOfRows, setTotalSumScore})
   
 

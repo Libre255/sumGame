@@ -1,7 +1,9 @@
 import shuffleArray from "./shuffleArray";
 
-function randomizeUpcomingBox(array: number[]) {
-  const shuffleArr = shuffleArray(array);
+const upComingBoxes: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+function randomizeUpcomingBox() {
+  const shuffleArr = shuffleArray(upComingBoxes);
   const grabRandomNumber =
     shuffleArr[Math.floor(Math.random() * shuffleArr.length)];
   return grabRandomNumber;
