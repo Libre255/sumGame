@@ -1,5 +1,4 @@
 import React, { useReducer } from "react";
-import Box from "./gamePlayManagement/components/Box";
 import ControllerContainer from "./controller/components/ControllerContainer";
 import ShotBoxAnimation from "./boxShotAnimation/ShotBoxAnimation";
 import useRandomNr from "./Hooks/useRandomNr";
@@ -10,10 +9,10 @@ import RowOfBoxes from "./gamePlayManagement/components/RowOfBoxes";
 
 const Gameplay: React.FC = () => {
   const [
-    { selectedNr, containerOfRows, bottomBoxPosition },
+    { selectedNr, containerOfRows, bottomBoxPosition, columnsVerticalIndexes },
     dispatch,
   ] = useReducer(reducer, initialState);
-  const { shotAnimation, readyToShot } = useControlMovements({ dispatch });
+  const { shotAnimation, readyToShot } = useControlMovements({ dispatch, columnsVerticalIndexes, bottomBoxPosition });
   const { randomNr } = useRandomNr({ readyToShot, dispatch });
   
   return (

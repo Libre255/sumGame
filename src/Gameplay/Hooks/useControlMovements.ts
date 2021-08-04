@@ -7,7 +7,7 @@ import {
   ShotAnimationType,
 } from "../interfaces/controlMovementsTypes";
 
-const useControlMovements = ({ dispatch }: Props) => {
+const useControlMovements = ({ dispatch, columnsVerticalIndexes, bottomBoxPosition }: Props) => {
   const [shotAnimation, setShotAnimation] = useState<ShotAnimationType>({
     gridRow: 5,
     display: "none",
@@ -30,8 +30,7 @@ const useControlMovements = ({ dispatch }: Props) => {
   }, [leftKey, rightkey, dispatch]);
 
   useEffect(() => {
-    let animationKeyFrame: number = 5;
-
+    const verticalGridPositionNr = (columnsVerticalIndexes[bottomBoxPosition - 1] + 2)
     if (x_Key_Pressed && !readyToShot.gameStarted) {
       setReadyToShot((pv) => ({ ...pv, gameStarted: true }));
     }
@@ -40,10 +39,11 @@ const useControlMovements = ({ dispatch }: Props) => {
       setReadyToShot((pv) => ({ ...pv, itsReady2Shoot: false }));
       setShotAnimation((pv) => ({ ...pv, display: "block" }));
       const animation = setInterval(() => {
-        if (animationKeyFrame > 2) {
-          animationKeyFrame--;
-          setShotAnimation((pv) => ({ ...pv, gridRow: animationKeyFrame }));
-        }
+        setShotAnimation(pv => {
+          if(pv.gridRow > verticalGridPositionNr ){
+            return {...pv, gridRow: pv.gridRow - 1}
+          }else return pv
+        })
       }, 100);
 
       return () => {
@@ -51,10 +51,10 @@ const useControlMovements = ({ dispatch }: Props) => {
           clearInterval(animation);
           setShotAnimation((pv) => ({ ...pv, gridRow: 5, display: "none" }));
           setReadyToShot((pv) => ({ ...pv, itsReady2Shoot: true }));
-        }, 500);
+        }, shotAnimation.gridRow * 100);
       };
     }
-  }, [x_Key_Pressed, readyToShot]);
+  }, [x_Key_Pressed, readyToShot, bottomBoxPosition, columnsVerticalIndexes, shotAnimation]);
 
   return { shotAnimation, readyToShot };
 };
