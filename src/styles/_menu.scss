@@ -1,40 +1,49 @@
-#Menu{
-  border:'1px solid green';
+#Menua{
   width: 17%;
-  height: 50%;
+  height: 85%;
   margin: 15vh 1vw;
-  .buttonStyle{
-    width: 100px;
-    height: 100px;
-    border: 1px solid white;
-    background-color: black;
+  border: 1px solid red;
+  @include FlexCenter();
+  flex-direction: column;
+  #startGame{
+   height: 6.5vw;
+   width: 6.5vw;
+   border: 1px solid red;
+   background-color: rgb(0, 0, 0);
+   border-radius: 50%;
+   @include FlexCenter();
+    color: whitesmoke;
+    font-size: 0.8vw;
+    cursor: pointer;
   }
-  .cardMenu{
-    background-color: black;
-    color:white;
-  }
-  .menuRows{
-    margin:20px 8px;
-  }
-}
-
-//Mobile Version
-@media(max-width:375px){
-  #Menu{
-    width: 100%;
-    margin-top: 0vh;
-    .buttonStyle{
-      width: 57px;
-      height: 57px;
-      margin:5px;
-      font-size: 10px;
+  #HowtoPlayContainer{
+    border:1px solid rgb(23, 119, 23);
+    width: 13vw;
+    line-height: 1.5vw;
+    text-align: center;
+    margin-top: 1vw;
+    #How2PlayTitle{
+      width: 100%;
+      border:1px solid yellowgreen;
+      margin-bottom: 1vw;
     }
-    .cardMenu{
-      width: 135px;
+    #gold{
+      color:gold;
     }
-    .showBox{
-      display: none;
+    #blue{color:rgb(68, 68, 231);}
+  }
+  #Goal{
+    text-align: center;
+    #goaltitle{
+      border: 3px solid grey;
+      margin:0.5vw;
+    }
+    margin:1vw;
+    padding: 1vw;
+    height: 13.8vw;
+    border:1px solid whitesmoke;
+    br{
+      margin:0.5vw;
     }
   }
-  
 }

@@ -39,46 +39,83 @@ body {
   text-align: center;
 }
 
-#Menu {
-  border: '1px solid green';
+#Menua {
   width: 17%;
-  height: 50%;
+  height: 85%;
   margin: 15vh 1vw;
+  border: 1px solid red;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
-#Menu .buttonStyle {
-  width: 100px;
-  height: 100px;
-  border: 1px solid white;
+#Menua #startGame {
+  height: 6.5vw;
+  width: 6.5vw;
+  border: 1px solid red;
   background-color: black;
+  border-radius: 50%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: whitesmoke;
+  font-size: 0.8vw;
+  cursor: pointer;
 }
 
-#Menu .cardMenu {
-  background-color: black;
-  color: white;
+#Menua #HowtoPlayContainer {
+  border: 1px solid #177717;
+  width: 13vw;
+  line-height: 1.5vw;
+  text-align: center;
+  margin-top: 1vw;
 }
 
-#Menu .menuRows {
-  margin: 20px 8px;
+#Menua #HowtoPlayContainer #How2PlayTitle {
+  width: 100%;
+  border: 1px solid yellowgreen;
+  margin-bottom: 1vw;
 }
 
-@media (max-width: 375px) {
-  #Menu {
-    width: 100%;
-    margin-top: 0vh;
-  }
-  #Menu .buttonStyle {
-    width: 57px;
-    height: 57px;
-    margin: 5px;
-    font-size: 10px;
-  }
-  #Menu .cardMenu {
-    width: 135px;
-  }
-  #Menu .showBox {
-    display: none;
-  }
+#Menua #HowtoPlayContainer #gold {
+  color: gold;
+}
+
+#Menua #HowtoPlayContainer #blue {
+  color: #4444e7;
+}
+
+#Menua #Goal {
+  text-align: center;
+  margin: 1vw;
+  padding: 1vw;
+  height: 13.8vw;
+  border: 1px solid whitesmoke;
+}
+
+#Menua #Goal #goaltitle {
+  border: 3px solid grey;
+  margin: 0.5vw;
+}
+
+#Menua #Goal br {
+  margin: 0.5vw;
 }
 
 #ControllerGrid {

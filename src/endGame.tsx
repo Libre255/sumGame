@@ -7,7 +7,7 @@ const EndGame :React.FC<Props> = ({total}) => {
 
   return(
     <div id="endGameBox">
-      Your total Sum score is:{total}
+      Your total Sum score is {total}!
     </div>
   )
 }
