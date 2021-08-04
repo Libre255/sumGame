@@ -19,7 +19,7 @@ const Menu: React.FC = () => {
       </div>
       <div id="Goal">
         <div id="goaltitle">The Goal of the game</div>
-        The Goal is to get the maximun sum of the golden Boxes in the right column.
+        The Goal is to get the highest sum total from the <span id='gold'>Golden Columns</span> on the right!
         <br/>
         You have 3 tries to change the number of the box.
         <br/>

@@ -16,6 +16,9 @@
     font-size: 0.8vw;
     cursor: pointer;
   }
+  #gold{
+    color:gold;
+  }
   #HowtoPlayContainer{
     border:1px solid rgb(23, 119, 23);
     width: 13vw;
@@ -27,10 +30,8 @@
       border:1px solid yellowgreen;
       margin-bottom: 1vw;
     }
-    #gold{
-      color:gold;
-    }
-    #blue{color:rgb(68, 68, 231);}
+    
+    #blue{color:rgb(0, 0, 233); background-color:rgba(255, 255, 255, 0.384); font-weight: bolder;}
   }
   #Goal{
     text-align: center;

@@ -3,7 +3,7 @@
   height: 95%;
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
   .RowStyle{
     display: flex;
     grid-column: 1/6;

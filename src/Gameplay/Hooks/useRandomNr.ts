@@ -4,7 +4,7 @@ import { COMMANDS } from "../reducer/GamePlayReducer";
 import { Props } from "../interfaces/randomNrTypes";
 import { randomizeUpcomingBox } from "../Methods/randomizeUpcomingBox";
 
-const useRandomNr = ({ dispatch, readyToShot, selectedNr }: Props) => {
+const useRandomNr = ({ dispatch, readyToShot }: Props) => {
   const [randomNr, setRandomNr] = useState<number>(
     randomizeUpcomingBox()
   );

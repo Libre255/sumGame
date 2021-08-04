@@ -1,5 +1,4 @@
-import React from 'react'
-import Box from './Box'
+import React from 'react';
 import { BoxProperties } from '../../reducer/GamePlayeReducerTypes'
 
 interface Props {
@@ -15,7 +14,9 @@ const TheTotalSumBox :React.FC<Props> = ({containerOfRows}) => {
             return <div key={index} id="SumTheRow" style={{border:'0'}}/>
           }else{
             return <div key={index} id="SumTheRow"> 
-                      <Box key={index} boxValue={total}/>
+                      <div className="Box GlobalStyleNrs">
+                        {total}
+                      </div>
                     </div>
           }
           })

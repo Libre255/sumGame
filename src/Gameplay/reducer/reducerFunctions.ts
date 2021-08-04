@@ -1,3 +1,4 @@
+import { randomizeUpcomingBox } from "../Methods/randomizeUpcomingBox";
 import { Action, InitialStateType } from "./GamePlayeReducerTypes";
 import { RowConstructor } from "./methods/rowConstructor";
 
@@ -40,15 +41,14 @@ const updateBox = (state: InitialStateType,
     return {checkIf3Times,
       columHasBeenFilled,
       updatedState:{
-      ...state,
-      containerOfRows:updateNumberInsideOfARow,
-      columnsVerticalIndexes: updateColumnsVerticalIndexes(
-        state,
-        rowHorizontalIndex
-      )
-    }}
+        ...state,
+        containerOfRows:updateNumberInsideOfARow,
+        columnsVerticalIndexes: updateColumnsVerticalIndexes(state, rowHorizontalIndex),
+          selectedNr: randomizeUpcomingBox()
+      }
+    }
   }else{
-    return {checkIf3Times, columHasBeenFilled, updatedState:{...state, containerOfRows: updateNumberInsideOfARow}}
+    return {checkIf3Times, columHasBeenFilled, updatedState:{...state, containerOfRows: updateNumberInsideOfARow, selectedNr: randomizeUpcomingBox()}}
   }
 }
 

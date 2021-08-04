@@ -79,6 +79,10 @@ body {
   cursor: pointer;
 }
 
+#Menua #gold {
+  color: gold;
+}
+
 #Menua #HowtoPlayContainer {
   border: 1px solid #177717;
   width: 13vw;
@@ -93,12 +97,10 @@ body {
   margin-bottom: 1vw;
 }
 
-#Menua #HowtoPlayContainer #gold {
-  color: gold;
-}
-
 #Menua #HowtoPlayContainer #blue {
-  color: #4444e7;
+  color: #0000e9;
+  background-color: rgba(255, 255, 255, 0.384);
+  font-weight: bolder;
 }
 
 #Menua #Goal {
@@ -120,8 +122,8 @@ body {
 
 #ControllerGrid {
   border: 5px solid cadetblue;
-  -ms-grid-row: 6;
-  grid-row: 6;
+  -ms-grid-row: 5;
+  grid-row: 5;
   -ms-grid-column: 1;
   -ms-grid-column-span: 6;
   grid-column: 1/7;
@@ -146,8 +148,8 @@ body {
   display: grid;
   -ms-grid-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
-  -ms-grid-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
-      grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  -ms-grid-rows: 1fr 1fr 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
 }
 
 #GamePlayWindow .RowStyle {
