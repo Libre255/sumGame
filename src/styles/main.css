@@ -1,3 +1,44 @@
+body {
+  background-color: black;
+  color: white;
+}
+
+#HomePage {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0 auto;
+  height: 95vh;
+}
+
+.flexBoxCenter {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.testBox {
+  border: 1px solid green;
+}
+
+.testBox2 {
+  border: 1px solid red;
+}
+
+.GlobalStyleNrs {
+  font-size: 100px;
+  text-align: center;
+}
+
 #Menu {
   border: '1px solid green';
   width: 17%;
@@ -101,23 +142,10 @@
   border: 1px solid gold;
 }
 
-body {
-  background-color: black;
-  color: white;
-}
-
-#HomePage {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  margin: 0 auto;
+#endGameBox {
   height: 95vh;
-}
-
-.flexBoxCenter {
+  width: 100%;
+  border: 1px solid red;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -127,18 +155,7 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-}
-
-.testBox {
-  border: 1px solid green;
-}
-
-.testBox2 {
-  border: 1px solid red;
-}
-
-.GlobalStyleNrs {
-  font-size: 100px;
-  text-align: center;
+  font-size: 3vw;
+  font-family: sans-serif;
 }
 /*# sourceMappingURL=main.css.map */

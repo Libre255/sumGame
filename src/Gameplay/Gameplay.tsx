@@ -6,15 +6,25 @@ import useControlMovements from "./Hooks/useControlMovements";
 import { initialState, reducer } from "./reducer/GamePlayReducer";
 import TheTotalSumBox from "./gamePlayManagement/components/TheTotalSumBox";
 import RowOfBoxes from "./gamePlayManagement/components/RowOfBoxes";
+import { useCountTotalSum } from "./Hooks/useCountTotalSum";
 
-const Gameplay: React.FC = () => {
+interface Props {
+  setTotalSumScore:React.Dispatch<React.SetStateAction<{
+    totalSum: number;
+    gameEnded: boolean;
+  }>>
+}
+
+const Gameplay: React.FC<Props> = ({setTotalSumScore}) => {
   const [
     { selectedNr, containerOfRows, bottomBoxPosition, columnsVerticalIndexes },
     dispatch,
   ] = useReducer(reducer, initialState);
   const { shotAnimation, readyToShot } = useControlMovements({ dispatch, columnsVerticalIndexes, bottomBoxPosition });
   const { randomNr } = useRandomNr({ readyToShot, dispatch });
+  useCountTotalSum({containerOfRows, setTotalSumScore})
   
+
   return (
     <div id="GamePlayWindow" className="testBox2 ">
       <RowOfBoxes containerOfRows={containerOfRows}/>

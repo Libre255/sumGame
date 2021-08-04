@@ -9,7 +9,7 @@ import {
 
 const useControlMovements = ({ dispatch, columnsVerticalIndexes, bottomBoxPosition }: Props) => {
   const [shotAnimation, setShotAnimation] = useState<ShotAnimationType>({
-    gridRow: 5,
+    gridRow: 4,
     display: "none",
   });
   const [readyToShot, setReadyToShot] = useState<ReadyToshotType>({
@@ -49,7 +49,7 @@ const useControlMovements = ({ dispatch, columnsVerticalIndexes, bottomBoxPositi
       return () => {
         setTimeout(() => {
           clearInterval(animation);
-          setShotAnimation((pv) => ({ ...pv, gridRow: 5, display: "none" }));
+          setShotAnimation((pv) => ({ ...pv, gridRow: 4, display: "none" }));
           setReadyToShot((pv) => ({ ...pv, itsReady2Shoot: true }));
         }, shotAnimation.gridRow * 100);
       };

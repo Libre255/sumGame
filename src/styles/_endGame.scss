@@ -1,0 +1,8 @@
+#endGameBox{
+  height: 95vh;
+  width: 100%;
+  border: 1px solid red;
+  @include FlexCenter();
+  font-size: 3vw;
+  font-family: sans-serif;
+}
