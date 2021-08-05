@@ -5,9 +5,7 @@ import { Props } from "../interfaces/randomNrTypes";
 import { randomizeUpcomingBox } from "../Methods/randomizeUpcomingBox";
 
 const useRandomNr = ({ dispatch, readyToShot }: Props) => {
-  const [randomNr, setRandomNr] = useState<number>(
-    randomizeUpcomingBox()
-  );
+  const [randomNr, setRandomNr] = useState<number>(randomizeUpcomingBox());
 
   const z_Key_Pressed = useKeyPressed("z");
 

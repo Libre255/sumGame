@@ -1,7 +1,7 @@
 export interface BoxProperties {
   value: number;
   AmountTimesAdded: number;
-  NrLocked:boolean;
+  NrLocked: boolean;
 }
 
 export interface InitialStateType {

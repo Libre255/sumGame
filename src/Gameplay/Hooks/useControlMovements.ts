@@ -7,7 +7,11 @@ import {
   ShotAnimationType,
 } from "../interfaces/controlMovementsTypes";
 
-const useControlMovements = ({ dispatch, columnsVerticalIndexes, bottomBoxPosition }: Props) => {
+const useControlMovements = ({
+  dispatch,
+  columnsVerticalIndexes,
+  bottomBoxPosition,
+}: Props) => {
   const [shotAnimation, setShotAnimation] = useState<ShotAnimationType>({
     gridRow: 4,
     display: "none",
@@ -23,11 +27,12 @@ const useControlMovements = ({ dispatch, columnsVerticalIndexes, bottomBoxPositi
   const c_Key_Pressed = useKeyPressed("c");
 
   useEffect(() => {
-    if(c_Key_Pressed){//need to check if the next number is 0 if its then dont update else do it
-      dispatch({type:COMMANDS.UPDATE_columnsVerticalIndexes})
+    if (c_Key_Pressed) {
+      //need to check if the next number is 0 if its then dont update else do it
+      dispatch({ type: COMMANDS.UPDATE_columnsVerticalIndexes });
     }
-  }, [c_Key_Pressed, dispatch])
-  
+  }, [c_Key_Pressed, dispatch]);
+
   useEffect(() => {
     if (leftKey) {
       dispatch({ type: COMMANDS.Left_BottomPosition });
@@ -37,7 +42,8 @@ const useControlMovements = ({ dispatch, columnsVerticalIndexes, bottomBoxPositi
   }, [leftKey, rightkey, dispatch]);
 
   useEffect(() => {
-    const verticalGridPositionNr = (columnsVerticalIndexes[bottomBoxPosition - 1] + 2)
+    const verticalGridPositionNr =
+      columnsVerticalIndexes[bottomBoxPosition - 1] + 2;
     if (x_Key_Pressed && !readyToShot.gameStarted) {
       setReadyToShot((pv) => ({ ...pv, gameStarted: true }));
     }
@@ -46,11 +52,11 @@ const useControlMovements = ({ dispatch, columnsVerticalIndexes, bottomBoxPositi
       setReadyToShot((pv) => ({ ...pv, itsReady2Shoot: false }));
       setShotAnimation((pv) => ({ ...pv, display: "block" }));
       const animation = setInterval(() => {
-        setShotAnimation(pv => {
-          if(pv.gridRow > verticalGridPositionNr ){
-            return {...pv, gridRow: pv.gridRow - 1}
-          }else return pv
-        })
+        setShotAnimation((pv) => {
+          if (pv.gridRow > verticalGridPositionNr) {
+            return { ...pv, gridRow: pv.gridRow - 1 };
+          } else return pv;
+        });
       }, 100);
 
       return () => {
@@ -61,7 +67,13 @@ const useControlMovements = ({ dispatch, columnsVerticalIndexes, bottomBoxPositi
         }, shotAnimation.gridRow * 100);
       };
     }
-  }, [x_Key_Pressed, readyToShot, bottomBoxPosition, columnsVerticalIndexes, shotAnimation]);
+  }, [
+    x_Key_Pressed,
+    readyToShot,
+    bottomBoxPosition,
+    columnsVerticalIndexes,
+    shotAnimation,
+  ]);
 
   return { shotAnimation, readyToShot };
 };
