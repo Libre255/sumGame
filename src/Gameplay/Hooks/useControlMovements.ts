@@ -20,7 +20,14 @@ const useControlMovements = ({ dispatch, columnsVerticalIndexes, bottomBoxPositi
   const rightkey = useKeyPressed("ArrowRight");
   const leftKey = useKeyPressed("ArrowLeft");
   const x_Key_Pressed = useKeyPressed("x");
+  const c_Key_Pressed = useKeyPressed("c");
 
+  useEffect(() => {
+    if(c_Key_Pressed){//need to check if the next number is 0 if its then dont update else do it
+      dispatch({type:COMMANDS.UPDATE_columnsVerticalIndexes})
+    }
+  }, [c_Key_Pressed, dispatch])
+  
   useEffect(() => {
     if (leftKey) {
       dispatch({ type: COMMANDS.Left_BottomPosition });

@@ -6,13 +6,28 @@ const updateColumnsVerticalIndexes = (
   state: InitialStateType,
   rowHorizontalIndex: number
 ) => {
-  return state.columnsVerticalIndexes.map((columnVertical_Index, index) =>
-    index === rowHorizontalIndex
-      ? (columnVertical_Index += 1)
-      : columnVertical_Index
-  ) as [number, number, number, number, number];
+  return {...state, columnsVerticalIndexes: state.columnsVerticalIndexes.map((columnVertical_Index, index) =>
+          index === rowHorizontalIndex
+            ? (columnVertical_Index += 1)
+            : columnVertical_Index
+        ) as [number, number, number, number, number]
+  };
 };
-
+const updateColumIndexOnKeyCPress = (state: InitialStateType, columnVerticalIndex: number, rowHorizontalIndex: number)=>{
+  const lastNumberOnPlay = state.containerOfRows[columnVerticalIndex][rowHorizontalIndex]
+  if(lastNumberOnPlay.value === 0){
+    return state
+  }else{
+    const updatedVersion = updateColumnsVerticalIndexes(state, rowHorizontalIndex)
+    const verticalIndex = updatedVersion.columnsVerticalIndexes[rowHorizontalIndex]
+    if(!updatedVersion.containerOfRows[verticalIndex]){
+      return {...updatedVersion, containerOfRows:[...updatedVersion.containerOfRows, RowConstructor()] }
+    }else{
+      return updatedVersion
+    }
+  }
+  
+}
 const updateBox = (state: InitialStateType,
   columnVerticalIndex: number,
   rowHorizontalIndex: number)=>{
@@ -43,8 +58,8 @@ const updateBox = (state: InitialStateType,
       updatedState:{
         ...state,
         containerOfRows:updateNumberInsideOfARow,
-        columnsVerticalIndexes: updateColumnsVerticalIndexes(state, rowHorizontalIndex),
-          selectedNr: randomizeUpcomingBox()
+        columnsVerticalIndexes: updateColumnsVerticalIndexes(state, rowHorizontalIndex).columnsVerticalIndexes,
+        selectedNr: randomizeUpcomingBox()
       }
     }
   }else{
@@ -94,5 +109,6 @@ export {
   updateColumnsVerticalIndexes,
   updateSelectedNr,
   updateBox,
-  checkColumnStatus
+  checkColumnStatus,
+  updateColumIndexOnKeyCPress
 };
