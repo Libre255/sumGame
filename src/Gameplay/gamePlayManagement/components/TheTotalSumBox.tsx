@@ -10,7 +10,7 @@ const TheTotalSumBox: React.FC<Props> = ({ containerOfRows }) => {
       {containerOfRows.map((row, index) => {
         const total = row.reduce(
           (startNr: number, box: BoxProperties) =>
-            box.AmountTimesAdded === 3 ? startNr + box.value : startNr + 0,
+            box.NrLocked ? startNr + box.value : startNr + 0,
           0
         );
         if (total === 0) {

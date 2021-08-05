@@ -13,21 +13,21 @@ interface Props {
 
 const useCountTotalSum = ({ containerOfRows, setTotalSumScore }: Props) => {
   useEffect(() => {
-    const allBoxesFilled3Times = containerOfRows.every((row) =>
-      row.every((box) => box.AmountTimesAdded === 3)
+    const allBoxesLockedNr = containerOfRows.every((row) =>
+      row.every((box) => box.NrLocked)
     );
     const totalSum = containerOfRows.reduce((startValue, rowValue) => {
       return (
         startValue +
         rowValue.reduce(
           (startNr, box) =>
-            box.AmountTimesAdded === 3 ? startNr + box.value : startNr + 0,
+            box.NrLocked ? startNr + box.value : startNr + 0,
           0
         )
       );
     }, 0);
     if (containerOfRows.length === 4) {
-      if (allBoxesFilled3Times) {
+      if (allBoxesLockedNr) {
         setTotalSumScore({ totalSum: totalSum, gameEnded: true });
       }
     }
