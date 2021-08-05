@@ -15,7 +15,7 @@ const RowOfBoxes :React.FC<Props> = ({containerOfRows}) => {
         }
         return<div key={index} className="RowStyle" style={{ gridRow: index + 1 }}>
           {row.map((box, index) => (
-            <Box key={index} boxValue={box.value} amountTimesAdded={box.AmountTimesAdded} />
+            <Box key={index} boxValue={box.value} amountTimesAdded={box.AmountTimesAdded} lockedNr={box.NrLocked}/>
           ))}
         </div>
       })} 
