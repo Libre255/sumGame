@@ -4,11 +4,11 @@ const Menu: React.FC = () => {
   return (
     <div id="Menua">
       <div id="startGame" onClick={() => window.location.reload(true)}>
-        Start New Game!
+        <div>Start New Game!</div>
       </div>
       <div id="HowtoPlayContainer">
         <div id="How2PlayTitle">How to play</div>
-        <span>
+        <div id="intructions">
           Use the keyboard arrows to move the selected number in the{" "}
           <span id="gold">Gold Box</span> on the bottom.
           {<br />}
@@ -20,7 +20,7 @@ const Menu: React.FC = () => {
           {<br />}
           Use <span id="controlzxcStyle">C</span> to lock the number and add
           another box on top!
-        </span>
+        </div>
       </div>
       <div id="Goal">
         <div id="goaltitle">The Goal of the game</div>

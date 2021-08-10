@@ -1,19 +1,19 @@
 #Menua{
   width: 17%;
-  height: 85%;
+  height: 95%;
   margin: 15vh 1vw;
   border: 1px solid red;
   @include FlexCenter();
   flex-direction: column;
   #startGame{
+   background-color: red;
    height: 6.5vw;
    width: 6.5vw;
-   border: 1px solid red;
-   background-color: rgb(0, 0, 0);
    border-radius: 50%;
+   text-align: center;
    @include FlexCenter();
     color: whitesmoke;
-    font-size: 0.8vw;
+    font-size: 1.2vw;
     cursor: pointer;
   }
   #controlzxcStyle{
@@ -26,26 +26,32 @@
     border:1px solid rgb(23, 119, 23);
     width: 13vw;
     line-height: 1.5vw;
-    text-align: center;
+    @include FlexCenter();
+    flex-direction: column;
     margin-top: 1vw;
     #How2PlayTitle{
+      text-align: center;
       width: 100%;
       border:1px solid yellowgreen;
       margin-bottom: 1vw;
     }
-    
+    #intructions{
+      width: 90%;
+      margin-bottom: 1vw;
+    }
     #blue{color:rgb(0, 0, 233); background-color:rgba(255, 255, 255, 0.384); font-weight: bolder;}
   }
   #Goal{
-    text-align: center;
-    #goaltitle{
-      border: 3px solid grey;
-      margin:0.5vw;
-    }
-    margin:1vw;
+    margin-top:1vw;
     padding: 1vw;
     height: 13.8vw;
+    width: 77%;
     border:1px solid whitesmoke;
+    #goaltitle{
+      border: 3px solid grey;
+      margin-bottom:0.5vw;
+      text-align: center;
+    }
     br{
       margin:0.5vw;
     }

@@ -41,7 +41,7 @@ body {
 
 #Menua {
   width: 17%;
-  height: 85%;
+  height: 95%;
   margin: 15vh 1vw;
   border: 1px solid red;
   display: -webkit-box;
@@ -60,11 +60,11 @@ body {
 }
 
 #Menua #startGame {
+  background-color: red;
   height: 6.5vw;
   width: 6.5vw;
-  border: 1px solid red;
-  background-color: black;
   border-radius: 50%;
+  text-align: center;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -75,7 +75,7 @@ body {
       -ms-flex-align: center;
           align-items: center;
   color: whitesmoke;
-  font-size: 0.8vw;
+  font-size: 1.2vw;
   cursor: pointer;
 }
 
@@ -91,13 +91,31 @@ body {
   border: 1px solid #177717;
   width: 13vw;
   line-height: 1.5vw;
-  text-align: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   margin-top: 1vw;
 }
 
 #Menua #HowtoPlayContainer #How2PlayTitle {
+  text-align: center;
   width: 100%;
   border: 1px solid yellowgreen;
+  margin-bottom: 1vw;
+}
+
+#Menua #HowtoPlayContainer #intructions {
+  width: 90%;
   margin-bottom: 1vw;
 }
 
@@ -108,16 +126,17 @@ body {
 }
 
 #Menua #Goal {
-  text-align: center;
-  margin: 1vw;
+  margin-top: 1vw;
   padding: 1vw;
   height: 13.8vw;
+  width: 77%;
   border: 1px solid whitesmoke;
 }
 
 #Menua #Goal #goaltitle {
   border: 3px solid grey;
-  margin: 0.5vw;
+  margin-bottom: 0.5vw;
+  text-align: center;
 }
 
 #Menua #Goal br {
