@@ -10,9 +10,9 @@ const Menu: React.FC = () => {
         <div id="How2PlayTitle">How to play</div>
         <div id="intructions">
           Use the keyboard arrows to move the selected number in the{" "}
-          <span id="gold">Gold Box</span> on the bottom.
+          <span id="green">Green Box</span> on the bottom row.
           {<br />}
-          Use <span id="controlzxcStyle">Z</span> to grab next number in the{" "}
+          Use <span id="controlzxcStyle">Z</span> to grab the number in the{" "}
           <span id="blue">Blue Box.</span>
           {<br />}
           Use <span id="controlzxcStyle">X</span> to "shot" the selected number

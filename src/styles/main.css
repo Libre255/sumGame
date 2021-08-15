@@ -83,6 +83,10 @@ body {
   color: chocolate;
 }
 
+#Menua #green {
+  color: lime;
+}
+
 #Menua #gold {
   color: gold;
 }
@@ -157,7 +161,7 @@ body {
 }
 
 #ControllerGrid #BoxContainer {
-  border: 5px solid #a39300;
+  border: 5px solid lime;
 }
 
 #ControllerGrid #UpcomingBoxesContainer {
